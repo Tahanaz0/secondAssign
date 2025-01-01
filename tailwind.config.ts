@@ -8,10 +8,12 @@ export default {
   ],
   theme: {
     extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-      },
+     fontFamily:{
+      static:['Archivo Black', 'serif']
+     },
+     fontWeight:{
+      wright:'700'
+     }
     },
   },
   plugins: [],
