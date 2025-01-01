@@ -11,13 +11,13 @@ function Homepage() {
           backgroundRepeat: 'no-repeat',
         }}
       >
-        <div className="">
+        <div>
           {/* Satoshi Font Applied Here */}
           <h1 className="font-extrabold text-5xl font-static">FIND CLOTHES</h1>
-          <h1 className="font-extrabold text-5xl">THAT MATCHES</h1>
-          <h1 className="font-extrabold text-5xl">YOUR STYLE</h1>
+          <h1 className="font-extrabold text-5xl font-static">THAT MATCHES</h1>
+          <h1 className="font-extrabold text-5xl font-static">YOUR STYLE</h1>
           <p className="mt-4 w-[45%] text-gray-500">
-            Browse through our diverse range of meticulously crafted garments,
+            Browse through our diverse range of meticulously crafted {`garments,`}
             designed to bring out your individuality and cater to your sense of style.
           </p>
         </div>
@@ -32,19 +32,19 @@ function Homepage() {
             <Image src='/vers.png' width={150} height={150} alt="vers"></Image>
           </li>
           <li>
-          <Image src='/zara.png' width={100} height={100} alt="vers"></Image>
+            <Image src='/zara.png' width={100} height={100} alt="vers"></Image>
 
           </li>
           <li>
-          <Image src='/gucci.png' width={150} height={150} alt="vers"></Image>
+            <Image src='/gucci.png' width={150} height={150} alt="vers"></Image>
 
           </li>
           <li>
-          <Image src='/prada.png' width={150} height={150} alt="vers"></Image>
+            <Image src='/prada.png' width={150} height={150} alt="vers"></Image>
 
           </li>
           <li>
-          <Image src='/cal.png' width={150} height={150} alt="vers"></Image>
+            <Image src='/cal.png' width={150} height={150} alt="vers"></Image>
 
           </li>
         </ul>
@@ -145,8 +145,8 @@ function Homepage() {
           </div>
           <div className="flex justify-center flex-col mb-4 md:mb-0">
             <Image src="/tshirt.png" width={300} height={300} alt="pic4" className="object-cover" />
-            <div >
-              <p className="sm:2xl md:text-[1.5vw] py-4">Sleeve Striped T-Shirt</p>
+            <div>
+              <p className="sm:2xl md:text-[1.5vw] py-4">Sleeve Striped {`T-Shirt`}</p>
 
               <div className="flex space-x-1 mt-2">
                 {[...Array(5)].map((_, i) => (
@@ -318,53 +318,57 @@ function Homepage() {
         <h1 className="font-bold text-4xl text-center mt-10 font-static">BROWSE BY DRESSES STYLE</h1>
 
 
-        <div className="grid grid-cols-1 sm:grid-cols-1   md:grid-cols-3 lg:grid-cols-3 px-4 gap-3 mt-10 rounded-3xl ">
+        <div className="flex flex-col justify-center items-center gap-2    mt-10 rounded-3xl ">
 
-          <div
-            className=" h-[289px] w-[407px] rounded-3xl    "
-            style={{
-              backgroundImage: 'url(/frame1.png)',
-              backgroundSize: 'contain',
-              backgroundRepeat: 'no-repeat',
-              backgroundPosition: 'center',
-            }}
-          >
-            <span className=" text-xl ">Casual</span>
+          <div className="flex justify-center gap-3">
+            <div
+              className=" h-[289px] w-[395px] rounded-3xl pl-14 pt-9  font-static text-3xl "
+              style={{
+                backgroundImage: 'url(/frame1.png)',
+                backgroundSize: 'contain',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center',
+              }}
+            >
+              <span className=" text-xl ">Casual</span>
+            </div>
+            <div
+              className="h-[289px]  w-[650px] rounded-3xl pl-14 pt-9 font-static  text-3xl col-span-2 "
+              style={{
+                backgroundImage: 'url(/frame.png)',
+                backgroundSize: 'contain',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center',
+              }}
+            >
+              <span className=" text-xl">Formal</span>
+            </div>
           </div>
-          <div
-            className="h-[289px]  w-[684px] rounded-3xl  col-span-2 "
-            style={{
-              backgroundImage: 'url(/frame.png)',
-              backgroundSize: 'contain',
-              backgroundRepeat: 'no-repeat',
-              backgroundPosition: 'center',
-            }}
-          >
-            <span className=" text-xl">Formal</span>
-          </div>
-          <div
-            className="h-[289px]  w-[684px] bg-red-950 rounded-3xl col-span-2 "
-            style={{
-              backgroundImage: 'url(/frame3.png)',
-              backgroundSize: 'contain',
-              backgroundRepeat: 'no-repeat',
-              backgroundPosition: 'center',
-            }}
-          >
-            <span className=" text-xl"> Party</span>
+          <div className="flex justify-center gap-3">
+            <div
+              className="h-[289px]  w-[650px] pl-14 pt-9 font-static text-3xl  rounded-3xl col-span-2 "
+              style={{
+                backgroundImage: 'url(/frame3.png)',
+                backgroundSize: 'contain',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center',
+              }}
+            >
+              <span className=" text-xl"> Party</span>
 
-          </div>
-          <div
-            className="h-[289px] w-[407px] rounded-3xl bg-red-900  left-10"
-            style={{
-              backgroundImage: 'url(/frame4.png)',
-              backgroundSize: 'contain',
-              backgroundRepeat: 'no-repeat',
-              backgroundPosition: 'center',
-            }}
-          >
-            <span className=" text-xl"> Gym</span>
+            </div>
+            <div
+              className="h-[289px] w-[350px] pl-14 pt-9  font-static text-3xl rounded-3xl  "
+              style={{
+                backgroundImage: 'url(/frame4.png)',
+                backgroundSize: 'contain',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center',
+              }}
+            >
+              <span className=" text-xl"> Gym</span>
 
+            </div>
           </div>
 
         </div>
@@ -372,7 +376,7 @@ function Homepage() {
       </div>
       <div>
         <div className="flex justify-between p-5 ">
-          <div className="font-bold  text-3xl">
+          <div className="font-bold  text-3xl font-static">
             OUR HAPPY CUSTOMERS
 
           </div>
@@ -405,12 +409,12 @@ function Homepage() {
               ))}
             </div>
             <div className="flex gap-3 pt-2">
-              <h1 className="font-bold ">Sarah M.</h1>
+              <h1 className=" text-xl font-bold">Sarah M.</h1>
               <Image src='/tick.png' width={20} height={10} alt="tick"></Image>
             </div>
             <p className="pt-4">
 
-              "I'm blown away by the quality and style of the clothes I received from Shop.co. From casual wear to elegant dresses, every piece I've bought has exceeded my expectations.”
+              {` "I'm blown away by the quality and style of the clothes I received from Shop.co. From casual wear to elegant dresses, every piece I've bought has exceeded my expectations.”`}
 
             </p>
 
@@ -431,12 +435,12 @@ function Homepage() {
               ))}
             </div>
             <div className="flex gap-3 pt-2">
-              <h1 className="font-bold ">Alex K.</h1>
+              <h1 className=" text-xl font-bold">Alex K.</h1>
               <Image src='/tick.png' width={20} height={10} alt="tick"></Image>
             </div>
             <p className="pt-4">
 
-            "Finding clothes that align with my personal style used to be a challenge until I discovered Shop.co. The range of options they offer is truly remarkable, catering to a variety of tastes and occasions.”
+              {`"Finding clothes that align with my personal style used to be a challenge until I discovered Shop.co. The range of options they offer is truly remarkable, catering to a variety of tastes and occasions.”`}
 
             </p>
 
@@ -457,12 +461,12 @@ function Homepage() {
               ))}
             </div>
             <div className="flex gap-3 pt-2">
-              <h1 className="font-bold ">James L.</h1>
+              <h1 className="text-xl font-bold ">James L.</h1>
               <Image src='/tick.png' width={20} height={10} alt="tick"></Image>
             </div>
             <p className="pt-4">
 
-            "As someone who's always on the lookout for unique fashion pieces, I'm thrilled to have stumbled upon Shop.co. The selection of clothes is not only diverse but also on-point with the latest trends.”
+              {`"As someone who's always on the lookout for unique fashion pieces, I'm thrilled to have stumbled upon Shop.co. The selection of clothes is not only diverse but also on-point with the latest trends.”`}
 
             </p>
 
