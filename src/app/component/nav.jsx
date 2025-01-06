@@ -3,7 +3,7 @@ function Nav() {
     return (
         <>
             <div className="flex justify-evenly  items-center p-4">
-                <div  className=" font-extrabold text-3xl font-static">
+                <div  className=" font-extrabold text-3xl ">
                     SHOP.CO
 
                 </div>

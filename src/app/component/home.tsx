@@ -14,13 +14,13 @@ function Homepage() {
       >
         {/* Text Section */}
         <div className="relative z-10">
-          <h1 className="text-3xl sm:text-3xl md:text-5xl font-extrabold font-static">
+          <h1 className="text-3xl sm:text-3xl md:text-5xl  ">
             FIND CLOTHES
           </h1>
-          <h1 className="text-3xl sm:text-3xl md:text-5xl font-extrabold font-static">
+          <h1 className="text-3xl sm:text-3xl md:text-5xl ">
             THAT MATCHES
           </h1>
-          <h1 className="font-extrabold text-3xl sm:text-3xl md:text-5xl font-static">
+          <h1 className=" text-3xl sm:text-3xl md:text-5xl ">
             YOUR STYLE
           </h1>
           <p className="flex sm:justify-center w-[418px] sm:w-[550px] mt-4 md:w-[690px] text-xl sm:text-xl md:text-xl text-gray-500">
