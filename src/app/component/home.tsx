@@ -1,29 +1,63 @@
 import Image from "next/image";
 
 function Homepage() {
+
   return (
     <>
       <div
-        className="min-h-screen p-14"
+        className="h-[690px] sm:h-[690px] md:min-h-screen p-5 sm:p-5 md:p-10 md:w-full relative"
         style={{
           backgroundImage: 'url(/bg.png)', // Corrected path for background image
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat',
         }}
       >
-        <div>
-          {/* Satoshi Font Applied Here */}
-          <h1 className="font-extrabold text-5xl font-static">FIND CLOTHES</h1>
-          <h1 className="font-extrabold text-5xl font-static">THAT MATCHES</h1>
-          <h1 className="font-extrabold text-5xl font-static">YOUR STYLE</h1>
-          <p className="mt-4 w-[45%] text-gray-500">
+        {/* Text Section */}
+        <div className="relative z-10">
+          <h1 className="text-3xl sm:text-3xl md:text-5xl font-extrabold font-static">
+            FIND CLOTHES
+          </h1>
+          <h1 className="text-3xl sm:text-3xl md:text-5xl font-extrabold font-static">
+            THAT MATCHES
+          </h1>
+          <h1 className="font-extrabold text-3xl sm:text-3xl md:text-5xl font-static">
+            YOUR STYLE
+          </h1>
+          <p className="flex sm:justify-center w-[418px] sm:w-[550px] mt-4 md:w-[690px] text-xl sm:text-xl md:text-xl text-gray-500">
             Browse through our diverse range of meticulously crafted {`garments,`}
             designed to bring out your individuality and cater to your sense of style.
           </p>
         </div>
-        <div className=" mt-6">
-          <button className="px-10 py-3 text-white bg-black  rounded-full">Shop Now</button>
+
+        {/* Button Section */}
+        <div className="mt-6 relative z-10 ">
+          <button className="px-44  sm:px-40 sm:text-xl md:px-12 py-2 text-white bg-black rounded-full">
+            Shop Now
+          </button>
         </div>
+        <div className="md:hidden mt-4">
+          <div className="flex justify-center gap-8">
+            <div >
+              <h1 className="font-bold ">200</h1>
+              <p className="">International Brands</p>
+            </div>
+            <div className="">
+              <h1 className="font-bold ">2,000+</h1>
+              <p>High-Quality Products</p>
+            </div>
+
+          </div>
+          <div className="text-center mt-2">
+            <h1 className="font-bold ">30,000+</h1>
+            <p>Happy Customers</p>
+          </div>
+           <div className="">
+          <Image src='/bg.png' width={600} height={600} alt="img"></Image>
+        </div>
+        </div>
+       
+        {/* Background Image on Small Screens */}
+        {/* <div className="absolute inset-x-0 bottom-0 bg-ce sm:block md:hidden h-64 bg-cover bg-center" style={{ backgroundImage: 'url(/bg.png)' }}></div> */}
       </div>
 
       <div className="p-8 bg-black text-white">
@@ -52,7 +86,7 @@ function Homepage() {
 
       <div className="p-8 mt-8">
         <h1 className="font-bold text-4xl text-center flex justify-center font-static">NEW ARRIVALS</h1>
-        <div className="grid grid-cols-1  sm:grid-cols-2  mt-8 md:grid-cols-4 justify-center gap-4 mt-6">
+        <div className="grid grid-cols-1  sm:grid-cols-2   md:grid-cols-4 justify-center gap-4 mt-6">
 
           <div className="flex flex-col justify-center   md:mb-0">
             <Image src="/image1.png" width={300} height={300} alt="pic1" className="rounded-2xl" />
@@ -176,6 +210,9 @@ function Homepage() {
             </div>
           </div>
         </div>
+        <div className=" mt-16 text-center">
+          <button className="px-40 text-xl  sm:px-44 sm:text-xl  md:px-16 py-2  border-2 border-gray-200  rounded-full">View All</button>
+        </div>
       </div>
 
 
@@ -186,7 +223,7 @@ function Homepage() {
 
       <div className="mt-5 p-8">
         <h1 className="font-bold text-4xl text-center flex justify-center font-static">TOP SELLING</h1>
-        <div className="flex flex-col sm:flex-col md:flex-row justify-center gap-4 mt-6">
+        <div className="grid grid-cols-1  sm:grid-cols-2   md:grid-cols-4 justify-center gap-4 mt-6">
 
           <div className="flex flex-col justify-center  mb-4 md:mb-0">
             <Image src="/shirt2.png" width={300} height={300} alt="pic1" className="rounded-2xl" />
@@ -311,18 +348,19 @@ function Homepage() {
           </div>
         </div>
       </div>
+
+
       {/* third addition */}
 
 
-      <div className="bg-[#F0F0F0] m-5 rounded-3xl flex flex-col justify-center p-5">
-        <h1 className="font-bold text-4xl text-center mt-10 font-static">BROWSE BY DRESSES STYLE</h1>
+      <div className="bg-[#F0F0F0] rounded-3xl flex flex-col justify-center h-auto px-4">
+        <h1 className="font-bold sm:text-3xl md:text-4xl text-center mt-10 font-static">BROWSE BY DRESSES STYLE</h1>
 
+        <div className="flex flex-col justify-center items-center gap-3 mt-10 rounded-3xl w-full">
 
-        <div className="flex flex-col justify-center items-center gap-2    mt-10 rounded-3xl ">
-
-          <div className="flex justify-center gap-3">
+          <div className="flex flex-col sm:flex-row md:flex-row justify-center gap-3 w-full">
             <div
-              className=" h-[289px] w-[395px] rounded-3xl pl-14 pt-9  font-static text-3xl "
+              className="w-full sm:w-full md:w-[395px] h-[289px] rounded-3xl pl-14 pt-9 font-static text-3xl flex justify-center items-center"
               style={{
                 backgroundImage: 'url(/frame1.png)',
                 backgroundSize: 'contain',
@@ -330,10 +368,10 @@ function Homepage() {
                 backgroundPosition: 'center',
               }}
             >
-              <span className=" text-xl ">Casual</span>
+              <span className="text-xl text-center">Casual</span>
             </div>
             <div
-              className="h-[289px]  w-[650px] rounded-3xl pl-14 pt-9 font-static  text-3xl col-span-2 "
+              className="w-full sm:w-full md:w-[650px] h-[289px] rounded-3xl pl-14 pt-9 font-static text-3xl flex justify-center items-center"
               style={{
                 backgroundImage: 'url(/frame.png)',
                 backgroundSize: 'contain',
@@ -341,12 +379,14 @@ function Homepage() {
                 backgroundPosition: 'center',
               }}
             >
-              <span className=" text-xl">Formal</span>
+              <span className="text-xl text-center">Formal</span>
             </div>
           </div>
-          <div className="flex justify-center gap-3">
+
+
+          <div className="flex flex-col sm:flex-row md:flex-row justify-center gap-3 w-full">
             <div
-              className="h-[289px]  w-[650px] pl-14 pt-9 font-static text-3xl  rounded-3xl col-span-2 "
+              className="w-full sm:w-full md:w-[650px] h-[289px] pl-14 pt-9 font-static text-3xl rounded-3xl flex justify-center items-center"
               style={{
                 backgroundImage: 'url(/frame3.png)',
                 backgroundSize: 'contain',
@@ -354,11 +394,10 @@ function Homepage() {
                 backgroundPosition: 'center',
               }}
             >
-              <span className=" text-xl"> Party</span>
-
+              <span className="text-xl text-center">Party</span>
             </div>
             <div
-              className="h-[289px] w-[350px] pl-14 pt-9  font-static text-3xl rounded-3xl  "
+              className="w-full sm:w-full md:w-[350px] h-[289px] pl-14 pt-9 font-static text-3xl rounded-3xl flex justify-center items-center"
               style={{
                 backgroundImage: 'url(/frame4.png)',
                 backgroundSize: 'contain',
@@ -366,14 +405,15 @@ function Homepage() {
                 backgroundPosition: 'center',
               }}
             >
-              <span className=" text-xl"> Gym</span>
-
+              <span className="text-xl text-center">Gym</span>
             </div>
           </div>
-
         </div>
-
       </div>
+
+
+
+
       <div>
         <div className="flex justify-between p-5 ">
           <div className="font-bold  text-3xl font-static">
