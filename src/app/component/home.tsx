@@ -5,28 +5,27 @@ function Homepage() {
   return (
     <>
       <div
-        className="h-[690px] sm:h-[690px] md:min-h-screen p-5 sm:p-5 md:p-10 md:w-full relative"
+        className="h-[700px] sm:h-[700px] md:min-h-screen p-5 sm:p-5 md:p-10 md:w-full relative"
         style={{
-          backgroundImage: 'url(/bg.png)', // Corrected path for background image
-          backgroundSize: 'cover',
+          backgroundImage: 'url(/bg.png)', 
           backgroundRepeat: 'no-repeat',
         }}
       >
         {/* Text Section */}
         <div className="relative z-10">
           <h1 className="text-3xl sm:text-3xl md:text-5xl  "
-          style={{ fontWeight: 900 }}>
+            style={{ fontWeight: 900 }}>
             FIND CLOTHES
           </h1>
           <h1 className="text-3xl sm:text-3xl md:text-5xl  "
-          style={{ fontWeight: 900 }}>
+            style={{ fontWeight: 900 }}>
             THAT MATCHES
           </h1>
           <h1 className=" text-3xl sm:text-3xl md:text-5xl "
-          style={{ fontWeight: 900 }}>
+            style={{ fontWeight: 900 }}>
             YOUR STYLE
           </h1>
-          <p className="flex sm:justify-center w-[418px] sm:w-[550px] mt-4 md:w-[690px] text-xl sm:text-xl md:text-xl text-gray-500">
+          <p className="flex sm:justify-center w-[350px] sm:w-[550px] mt-4 md:w-[690px] text-xl sm:text-xl md:text-xl text-gray-500">
             Browse through our diverse range of meticulously crafted {`garments,`}
             designed to bring out your individuality and cater to your sense of style.
           </p>
@@ -34,7 +33,7 @@ function Homepage() {
 
         {/* Button Section */}
         <div className="mt-6 relative z-10 ">
-          <button className="px-44  sm:px-40 sm:text-xl md:px-12 py-2 text-white bg-black rounded-full">
+          <button className="w-[100%] sm:w-[100%]  sm:text-xl md:w-48 md:px-12 py-2 text-white bg-black rounded-full">
             Shop Now
           </button>
         </div>
@@ -54,11 +53,11 @@ function Homepage() {
             <h1 className="font-bold ">30,000+</h1>
             <p>Happy Customers</p>
           </div>
-           <div className="">
-          <Image src='/bg.png' width={600} height={600} alt="img"></Image>
+          <div className=" flex  justify-center">
+            <Image src='/bg3.png' width={200} height={300} alt="img"></Image>
+          </div>
         </div>
-        </div>
-       
+
         {/* Background Image on Small Screens */}
         {/* <div className="absolute inset-x-0 bottom-0 bg-ce sm:block md:hidden h-64 bg-cover bg-center" style={{ backgroundImage: 'url(/bg.png)' }}></div> */}
       </div>
@@ -89,7 +88,7 @@ function Homepage() {
 
       <div className="p-8 mt-8">
         <h1 className=" text-4xl text-center flex justify-center"
-        style={{ fontWeight: 900 }}>NEW ARRIVALS</h1>
+          style={{ fontWeight: 900 }}>NEW ARRIVALS</h1>
         <div className="grid grid-cols-1  sm:grid-cols-2   md:grid-cols-4 justify-center gap-4 mt-6">
 
           <div className="flex flex-col justify-center   md:mb-0">
@@ -227,7 +226,7 @@ function Homepage() {
 
       <div className="mt-5 p-8">
         <h1 className="text-4xl text-center flex justify-center"
-        style={{ fontWeight: 900 }}>TOP SELLING</h1>
+          style={{ fontWeight: 900 }}>TOP SELLING</h1>
         <div className="grid grid-cols-1  sm:grid-cols-2   md:grid-cols-4 justify-center gap-4 mt-6">
 
           <div className="flex flex-col justify-center  mb-4 md:mb-0">
@@ -359,59 +358,60 @@ function Homepage() {
 
 
       <div className="bg-[#F0F0F0] rounded-3xl flex flex-col justify-center h-auto px-4">
-        <h1 className="sm:text-3xl md:text-4xl text-center mt-10"
-        style={{ fontWeight: 900 }}>BROWSE BY DRESSES STYLE</h1>
+        <h1 className="text-2xl sm:text-3xl md:text-4xl text-center mt-10"
+          style={{ fontWeight: 900 }}>BROWSE BY DRESSES STYLE</h1>
 
         <div className="flex flex-col justify-center items-center gap-3 mt-10 rounded-3xl w-full">
 
-          <div className="flex flex-col sm:flex-row md:flex-row justify-center gap-3 w-full">
+          <div className="flex flex-col sm:flex-col md:flex-row justify-center gap-3 w-full">
             <div
-              className="w-full sm:w-full md:w-[395px] h-[289px] rounded-3xl pl-14 pt-9 font-static text-3xl flex justify-center items-center"
+              className="w-full sm:w-[650px] md:w-[395px] h-[289px] rounded-3xl pl-14 pt-9 text-3xl"
               style={{
                 backgroundImage: 'url(/frame1.png)',
-                backgroundSize: 'contain',
+                backgroundSize: '110%', // Increase size to 120%
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center',
               }}
             >
-              <span className="text-xl text-center">Casual</span>
+              <span className="text-xl">Casual</span>
             </div>
+
             <div
-              className="w-full sm:w-full md:w-[650px] h-[289px] rounded-3xl pl-14 pt-9 font-static text-3xl flex justify-center items-center"
+              className="w-full sm:w-[690px] md:w-[650px] h-[289px] rounded-3xl pl-14  pt-9  text-3xl "
               style={{
                 backgroundImage: 'url(/frame.png)',
-                backgroundSize: 'contain',
+                backgroundSize: '110%',
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center',
               }}
             >
-              <span className="text-xl text-center">Formal</span>
+              <span className="text-xl ">Formal</span>
             </div>
           </div>
 
 
-          <div className="flex flex-col sm:flex-row md:flex-row justify-center gap-3 w-full">
+          <div className="flex flex-col sm:flex-col md:flex-row justify-center gap-3 w-full">
             <div
-              className="w-full sm:w-full md:w-[650px] h-[289px] pl-14 pt-9 font-static text-3xl rounded-3xl flex justify-center items-center"
+              className="w-full sm:w-[690px] md:w-[650px] h-[289px]  pt-9 pl-14 text-3xl rounded-3xl"
               style={{
                 backgroundImage: 'url(/frame3.png)',
-                backgroundSize: 'contain',
+                backgroundSize: '110%',
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center',
               }}
             >
-              <span className="text-xl text-center">Party</span>
+              <span className="text-xl ">Party</span>
             </div>
             <div
-              className="w-full sm:w-full md:w-[350px] h-[289px] pl-14 pt-9 font-static text-3xl rounded-3xl flex justify-center items-center"
+              className="w-full sm:w-[650px] md:w-[395px] h-[289px] pt-9 pl-14 text-3xl rounded-3xl "
               style={{
                 backgroundImage: 'url(/frame4.png)',
-                backgroundSize: 'contain',
+                backgroundSize: '99%',
                 backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'center',
+                backgroundPosition: 'fix',
               }}
             >
-              <span className="text-xl text-center">Gym</span>
+              <span className="text-xl">Gym</span>
             </div>
           </div>
         </div>
@@ -422,7 +422,8 @@ function Homepage() {
 
       <div>
         <div className="flex justify-between p-5 ">
-          <div className="font-bold  text-3xl font-static">
+          <div className="text-3xl sm:text-3xl"
+          style={{ fontWeight: 900 }}>
             OUR HAPPY CUSTOMERS
 
           </div>
@@ -518,6 +519,22 @@ function Homepage() {
 
           </div>
 
+        </div>
+      </div>
+      <div className="flex flex-col sm:flex-col md:flex-row justify-around  bg-black text-white p-5 m-10 rounded-2xl">
+        <div>
+          <h1 className="text-3xl w-[60%]"  
+           style={{ fontWeight: 900 }}>STAY UPTO DATE ABOUT OUR LATEST OFFERS</h1>
+        </div>
+        <div className="flex flex-col justify-center gap-4">
+          <div className="flex justify-center items-center  gap-3 w-[100%] sm:bg-white  md:bg-[#F0F0F0]  rounded-full">
+            <Image src='/email.png' width={30} height={30} alt="search" className="m-2"></Image>
+            <input className=" bg-[#F0F0F1] outline-none rounded-full "
+              type="search" placeholder="Enter your email address" name="" id="" />
+          </div>
+          <div>
+            <div className=" bg-[#F0F0F1]  w-[100%] text-center text-black outline-none rounded-full p-3 ">Subscribe to Newsletter</div>
+          </div>
         </div>
       </div>
     </>
