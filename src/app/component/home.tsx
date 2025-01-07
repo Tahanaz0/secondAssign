@@ -14,13 +14,16 @@ function Homepage() {
       >
         {/* Text Section */}
         <div className="relative z-10">
-          <h1 className="text-3xl sm:text-3xl md:text-5xl  ">
+          <h1 className="text-3xl sm:text-3xl md:text-5xl  "
+          style={{ fontWeight: 900 }}>
             FIND CLOTHES
           </h1>
-          <h1 className="text-3xl sm:text-3xl md:text-5xl ">
+          <h1 className="text-3xl sm:text-3xl md:text-5xl  "
+          style={{ fontWeight: 900 }}>
             THAT MATCHES
           </h1>
-          <h1 className=" text-3xl sm:text-3xl md:text-5xl ">
+          <h1 className=" text-3xl sm:text-3xl md:text-5xl "
+          style={{ fontWeight: 900 }}>
             YOUR STYLE
           </h1>
           <p className="flex sm:justify-center w-[418px] sm:w-[550px] mt-4 md:w-[690px] text-xl sm:text-xl md:text-xl text-gray-500">
@@ -85,7 +88,8 @@ function Homepage() {
       </div>
 
       <div className="p-8 mt-8">
-        <h1 className="font-bold text-4xl text-center flex justify-center font-static">NEW ARRIVALS</h1>
+        <h1 className=" text-4xl text-center flex justify-center"
+        style={{ fontWeight: 900 }}>NEW ARRIVALS</h1>
         <div className="grid grid-cols-1  sm:grid-cols-2   md:grid-cols-4 justify-center gap-4 mt-6">
 
           <div className="flex flex-col justify-center   md:mb-0">
@@ -222,7 +226,8 @@ function Homepage() {
 
 
       <div className="mt-5 p-8">
-        <h1 className="font-bold text-4xl text-center flex justify-center font-static">TOP SELLING</h1>
+        <h1 className="text-4xl text-center flex justify-center"
+        style={{ fontWeight: 900 }}>TOP SELLING</h1>
         <div className="grid grid-cols-1  sm:grid-cols-2   md:grid-cols-4 justify-center gap-4 mt-6">
 
           <div className="flex flex-col justify-center  mb-4 md:mb-0">
@@ -354,7 +359,8 @@ function Homepage() {
 
 
       <div className="bg-[#F0F0F0] rounded-3xl flex flex-col justify-center h-auto px-4">
-        <h1 className="font-bold sm:text-3xl md:text-4xl text-center mt-10 font-static">BROWSE BY DRESSES STYLE</h1>
+        <h1 className="sm:text-3xl md:text-4xl text-center mt-10"
+        style={{ fontWeight: 900 }}>BROWSE BY DRESSES STYLE</h1>
 
         <div className="flex flex-col justify-center items-center gap-3 mt-10 rounded-3xl w-full">
 
