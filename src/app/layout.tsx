@@ -5,7 +5,7 @@ import Footer from "./footer/page";
 import {Archivo} from 'next/font/google'
 
 const archivo = Archivo({
-  weight:['400', '900'],
+  weight:['400'],
   subsets:['latin'],
 }) ;
 
