@@ -26,7 +26,7 @@ function Nav() {
 
                         {/* Menu Items */}
                         {menuOpen && (
-                            <ul className="mt-2 bg-white shadow-lg rounded p-4 flex flex-col gap-4">
+                            <ul className="mt-2 bg-white shadow-lg rounded p-4 flex flex-col gap-4 hover:cursor-pointer">
                                 <li
                                     className="flex justify-between items-center hover:bg-[#F5F5F5] p-2 rounded"
                                     onClick={() => setMenuOpen(false)}

@@ -5,7 +5,7 @@ function Homepage() {
   return (
     <>
       <div
-        className="h-auto sm:h-auto md:min-h-screen p-5 sm:p-5 md:p-10 md:w-full relative"
+        className="h-auto  bg-[#F0F0F0] sm:h-auto md:min-h-screen p-5 sm:p-5 md:p-10 md:w-full relative"
         style={{
           backgroundImage: 'url(/bg.png)', 
           backgroundRepeat: 'no-repeat',
@@ -213,8 +213,10 @@ function Homepage() {
             </div>
           </div>
         </div>
-        <div className=" mt-16 text-center">
-          <button className="px-40 text-xl  sm:px-44 sm:text-xl  md:px-16 py-2  border-2 border-gray-200  rounded-full">View All</button>
+        <div className="mt-6 relative z-10  text-center">
+          <button className="w-[100%] sm:w-[100%]  sm:text-xl md:w-56 md:px-12 py-2 border  border-gray-300 rounded-full">
+            Veiw All
+          </button>
         </div>
       </div>
 
@@ -351,6 +353,11 @@ function Homepage() {
             </div>
           </div>
         </div>
+        <div className="mt-6 relative z-10  text-center">
+          <button className="w-[100%] sm:w-[100%]  sm:text-xl md:w-56 md:px-12 py-2 border  border-gray-300 rounded-full">
+            Veiw All
+          </button>
+        </div>
       </div>
 
 
@@ -368,7 +375,7 @@ function Homepage() {
     className="w-full sm:w-[650px] md:w-[395px] h-[289px] rounded-3xl pl-14 pt-9 text-3xl"
     style={{
       backgroundImage: 'url(/frame1.png)',
-      backgroundSize: '150%',
+      backgroundSize: '100%',
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'center',
     }}
