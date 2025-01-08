@@ -5,7 +5,7 @@ function Homepage() {
   return (
     <>
       <div
-        className="h-[700px] sm:h-[700px] md:min-h-screen p-5 sm:p-5 md:p-10 md:w-full relative"
+        className="h-auto sm:h-auto md:min-h-screen p-5 sm:p-5 md:p-10 md:w-full relative"
         style={{
           backgroundImage: 'url(/bg.png)', 
           backgroundRepeat: 'no-repeat',
@@ -54,7 +54,7 @@ function Homepage() {
             <p>Happy Customers</p>
           </div>
           <div className=" flex  justify-center">
-            <Image src='/bg3.png' width={200} height={300} alt="img"></Image>
+            <Image src='/bg3.png' width={0} height={0} alt="img" sizes="100vw" className="w-36 sm:w-[30%] mb-0"></Image>
           </div>
         </div>
 
