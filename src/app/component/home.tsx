@@ -363,39 +363,38 @@ function Homepage() {
 
         <div className="flex flex-col justify-center items-center gap-3 mt-10 rounded-3xl w-full">
 
+        <div className="flex flex-col sm:flex-col md:flex-row justify-center gap-3 w-full">
+  <div
+    className="w-full sm:w-[650px] md:w-[395px] h-[289px] rounded-3xl pl-14 pt-9 text-3xl"
+    style={{
+      backgroundImage: 'url(/frame1.png)',
+      backgroundSize: '150%',
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'center',
+    }}
+  >
+    <span className="text-xl">Casual</span>
+  </div>
+
+  <div
+    className="w-full sm:w-[690px] md:w-[650px] h-[289px] rounded-3xl pl-14 pt-9 text-3xl sm:bg-[140%] md:bg-[120%]"
+    style={{
+      backgroundImage: 'url(/frame.png)',
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'center',
+    }}
+  >
+    <span className="text-xl">Formal</span>
+  </div>
+</div>
+
+
+
           <div className="flex flex-col sm:flex-col md:flex-row justify-center gap-3 w-full">
             <div
-              className="w-full sm:w-[650px] md:w-[395px] h-[289px] rounded-3xl pl-14 pt-9 text-3xl"
-              style={{
-                backgroundImage: 'url(/frame1.png)',
-                backgroundSize: '110%', // Increase size to 120%
-                backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'center',
-              }}
-            >
-              <span className="text-xl">Casual</span>
-            </div>
-
-            <div
-              className="w-full sm:w-[690px] md:w-[650px] h-[289px] rounded-3xl pl-14  pt-9  text-3xl "
-              style={{
-                backgroundImage: 'url(/frame.png)',
-                backgroundSize: '110%',
-                backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'center',
-              }}
-            >
-              <span className="text-xl ">Formal</span>
-            </div>
-          </div>
-
-
-          <div className="flex flex-col sm:flex-col md:flex-row justify-center gap-3 w-full">
-            <div
-              className="w-full sm:w-[690px] md:w-[650px] h-[289px]  pt-9 pl-14 text-3xl rounded-3xl"
+              className="w-full sm:w-[690px] md:w-[650px] h-[289px] rounded-3xl pl-14 pt-9 text-3xl sm:bg-[140%] md:bg-[120%]"
               style={{
                 backgroundImage: 'url(/frame3.png)',
-                backgroundSize: '110%',
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center',
               }}
@@ -456,7 +455,7 @@ function Homepage() {
               ))}
             </div>
             <div className="flex gap-3 pt-2">
-              <h1 className=" text-xl font-bold">Sarah M.</h1>
+              <h1 className="  font-bold">Sarah M.</h1>
               <Image src='/tick.png' width={20} height={10} alt="tick"></Image>
             </div>
             <p className="pt-4">
@@ -482,7 +481,7 @@ function Homepage() {
               ))}
             </div>
             <div className="flex gap-3 pt-2">
-              <h1 className=" text-xl font-bold">Alex K.</h1>
+              <h1 className="  font-bold">Alex K.</h1>
               <Image src='/tick.png' width={20} height={10} alt="tick"></Image>
             </div>
             <p className="pt-4">
@@ -508,7 +507,7 @@ function Homepage() {
               ))}
             </div>
             <div className="flex gap-3 pt-2">
-              <h1 className="text-xl font-bold ">James L.</h1>
+              <h1 className="font-bold ">James L.</h1>
               <Image src='/tick.png' width={20} height={10} alt="tick"></Image>
             </div>
             <p className="pt-4">
@@ -526,10 +525,10 @@ function Homepage() {
           <h1 className="text-3xl "  
            style={{ fontWeight: 900 }}>STAY UPTO DATE ABOUT OUR LATEST OFFERS</h1>
         </div>
-        <div className="flex w-96  sm:w-98 flex-col justify-center md:w-[30%]  gap-2">
-          <div className="flex   justify-center items-center p-3 pl-7 bg-[#F0F0F1] gap-3 w-[100%] sm:bg-[#F0F0F1]  md:bg-[#F0F0F0]  rounded-full">
-            <Image src='/email.png' width={20} height={20} alt="search" className=""></Image>
-            <input className=" bg-[#F0F0F1] outline-none rounded-full w-full  "
+        <div className="flex w-[100%] sm:w-[100%] flex-col justify-center md:w-[30%]  gap-2">
+          <div className="flex    jutify-center items-center p-3 pl-7 bg-[#F0F0F1] gap-3 md:w-[100%] sm:bg-[#F0F0F1]  md:bg-[#F0F0F0]  rounded-full">
+            <Image src='/email.png' width={0} height={0} alt="search" sizes="100vw" className="w-5 sm:w-5 md:w-30"></Image>
+            <input className="w-[70%] sm:w-[40%] bg-[#F0F0F1] outline-none rounded-full md:w-full  "
               type="search" placeholder="Enter your email address" name="" id="" />
           </div>
           <div>
