@@ -521,15 +521,15 @@ function Homepage() {
 
         </div>
       </div>
-      <div className="flex flex-col sm:flex-col md:flex-row justify-around  bg-black text-white p-5 m-10 rounded-2xl">
-        <div>
-          <h1 className="text-3xl w-[60%]"  
+      <div className="flex justify-around gap-5 items-center flex-col sm:flex-col md:flex-row  bg-black text-white p-5 m-10 rounded-2xl">
+        <div className=" w-[50%] sm:w-[50%] md:w[20%] lg:w-[35%]">
+          <h1 className="text-3xl "  
            style={{ fontWeight: 900 }}>STAY UPTO DATE ABOUT OUR LATEST OFFERS</h1>
         </div>
-        <div className="flex flex-col justify-center gap-4">
-          <div className="flex justify-center items-center  gap-3 w-[100%] sm:bg-white  md:bg-[#F0F0F0]  rounded-full">
-            <Image src='/email.png' width={30} height={30} alt="search" className="m-2"></Image>
-            <input className=" bg-[#F0F0F1] outline-none rounded-full "
+        <div className="flex w-96  sm:w-98 flex-col justify-center md:w-[30%]  gap-2">
+          <div className="flex   justify-center items-center p-3 pl-7 bg-[#F0F0F1] gap-3 w-[100%] sm:bg-[#F0F0F1]  md:bg-[#F0F0F0]  rounded-full">
+            <Image src='/email.png' width={20} height={20} alt="search" className=""></Image>
+            <input className=" bg-[#F0F0F1] outline-none rounded-full w-full  "
               type="search" placeholder="Enter your email address" name="" id="" />
           </div>
           <div>
