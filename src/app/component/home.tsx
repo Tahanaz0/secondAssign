@@ -1,5 +1,5 @@
 import Image from "next/image";
-
+import Link from "next/link";
 function Homepage() {
 
   return (
@@ -90,10 +90,11 @@ function Homepage() {
         <h1 className=" text-4xl text-center flex justify-center"
           style={{ fontWeight: 900 }}>NEW ARRIVALS</h1>
         <div className="grid grid-cols-1  sm:grid-cols-2   md:grid-cols-4 justify-center gap-4 mt-6">
-
-          <div className="flex flex-col justify-center   md:mb-0">
+      <Link href={'/product/shirt1'}>
+          <div className="flex flex-col justify-center hover:scale-105 active:scale-100 transition-all  md:mb-0">
             <Image src="/image1.png" width={300} height={300} alt="pic1" className="rounded-2xl" />
-            <div >
+           
+            <div  >
               <p className="sm:2xl md:text-[1.5vw] py-4">T-shirt with tape Details</p>
 
               <div className="flex space-x-1 mt-2">
@@ -120,7 +121,8 @@ function Homepage() {
               </div>
             </div>
           </div>
-          <div className="flex justify-center flex-col mb-4 md:mb-0">
+          </Link>
+          <div className="flex justify-center flex-col mb-4 md:mb-0 hover:scale-105 active:scale-100 transition-all">
             <Image src="/pent.png" width={300} height={300} alt="pic2" className="object-cover" />
             <div >
               <p className="sm:2xl md:text-[1.5vw] py-4">Skinny fit jeans</p>
@@ -151,7 +153,7 @@ function Homepage() {
               </div>
             </div>
           </div>
-          <div className="flex justify-center flex-col mb-4 md:mb-0">
+          <div className="flex justify-center flex-col mb-4 md:mb-0 hover:scale-105 active:scale-100 transition-all">
             <Image src="/shirt.png" width={300} height={300} alt="pic3" className="object-cover" />
             <div >
               <p className="sm:2xl md:text-[1.5vw] py-4">Checkered Shirt</p>
@@ -180,7 +182,7 @@ function Homepage() {
               </div>
             </div>
           </div>
-          <div className="flex justify-center flex-col mb-4 md:mb-0">
+          <div className="flex justify-center flex-col mb-4 md:mb-0 hover:scale-105 active:scale-100 transition-all">
             <Image src="/tshirt.png" width={300} height={300} alt="pic4" className="object-cover" />
             <div>
               <p className="sm:2xl md:text-[1.5vw] py-4">Sleeve Striped {`T-Shirt`}</p>
@@ -214,7 +216,7 @@ function Homepage() {
           </div>
         </div>
         <div className="mt-6 relative z-10  text-center">
-          <button className="w-[100%] sm:w-[100%]  sm:text-xl md:w-56 md:px-12 py-2 border  border-gray-300 rounded-full">
+          <button className="w-[100%] sm:w-[100%]  sm:text-xl md:w-56 md:px-12 py-2 border  border-gray-300 rounded-full hover:scale-105 active:scale-100 transition-all">
             Veiw All
           </button>
         </div>
@@ -231,7 +233,7 @@ function Homepage() {
           style={{ fontWeight: 900 }}>TOP SELLING</h1>
         <div className="grid grid-cols-1  sm:grid-cols-2   md:grid-cols-4 justify-center gap-4 mt-6">
 
-          <div className="flex flex-col justify-center  mb-4 md:mb-0">
+          <div className="flex flex-col justify-center  mb-4 md:mb-0 hover:scale-105 active:scale-100 transition-all">
             <Image src="/shirt2.png" width={300} height={300} alt="pic1" className="rounded-2xl" />
             <div >
               <p className="sm:2xl md:text-[1.5vw] py-4">Vertical Striped Shirt</p>
@@ -262,7 +264,7 @@ function Homepage() {
               </div>
             </div>
           </div>
-          <div className="flex justify-center flex-col mb-4 md:mb-0">
+          <div className="flex justify-center flex-col mb-4 md:mb-0 hover:scale-105 active:scale-100 transition-all">
             <Image src="/tshirt2.png" width={300} height={300} alt="pic2" className="object-cover" />
             <div >
               <p className="sm:2xl md:text-[1.5vw] py-4">Courage Graphic T-Shirt</p>
@@ -292,7 +294,7 @@ function Homepage() {
               </div>
             </div>
           </div>
-          <div className="flex justify-center flex-col mb-4 md:mb-0">
+          <div className="flex justify-center flex-col mb-4 md:mb-0 hover:scale-105 active:scale-100 transition-all">
             <Image src="/short.png" width={300} height={300} alt="pic3" className="object-cover" />
             <div >
               <p className="sm:2xl md:text-[1.5vw] py-4 ">Loose Fit Bermuda Shorts</p>
@@ -321,7 +323,7 @@ function Homepage() {
               </div>
             </div>
           </div>
-          <div className="flex justify-center flex-col mb-4 md:mb-0">
+          <div className="flex justify-center flex-col mb-4 md:mb-0 hover:scale-105 active:scale-100 transition-all">
             <Image src="/pent.png" width={300} height={300} alt="pic4" className="object-cover" />
             <div >
               <p className="sm:2xl md:text-[1.5vw] py-4">Faded Skinny Jeans</p>
@@ -354,7 +356,7 @@ function Homepage() {
           </div>
         </div>
         <div className="mt-6 relative z-10  text-center">
-          <button className="w-[100%] sm:w-[100%]  sm:text-xl md:w-56 md:px-12 py-2 border  border-gray-300 rounded-full">
+          <button className="w-[100%] sm:w-[100%]  sm:text-xl md:w-56 md:px-12 py-2 border  border-gray-300 rounded-full hover:scale-105 active:scale-100 transition-all">
             Veiw All
           </button>
         </div>
@@ -372,7 +374,7 @@ function Homepage() {
 
         <div className="flex flex-col sm:flex-col md:flex-row justify-center gap-3 w-full">
   <div
-    className="w-full sm:w-[650px] md:w-[395px] h-[289px] rounded-3xl pl-14 pt-9 text-3xl"
+    className="w-full sm:w-[650px] md:w-[395px] h-[289px] hover:scale-105 active:scale-100 transition-all rounded-3xl pl-14 pt-9 text-3xl"
     style={{
       backgroundImage: 'url(/frame1.png)',
       backgroundSize: '100%',
@@ -384,7 +386,7 @@ function Homepage() {
   </div>
 
   <div
-    className="w-full sm:w-[690px] md:w-[650px] h-[289px] rounded-3xl pl-14 pt-9 text-3xl sm:bg-[140%] md:bg-[120%]"
+    className="w-full sm:w-[690px] md:w-[650px] h-[289px] hover:scale-105 active:scale-100 transition-all rounded-3xl pl-14 pt-9 text-3xl sm:bg-[140%] md:bg-[120%]"
     style={{
       backgroundImage: 'url(/frame.png)',
       backgroundRepeat: 'no-repeat',
@@ -399,7 +401,7 @@ function Homepage() {
 
           <div className="flex flex-col sm:flex-col md:flex-row justify-center gap-3 w-full">
             <div
-              className="w-full sm:w-[690px] md:w-[650px] h-[289px] rounded-3xl pl-14 pt-9 text-3xl sm:bg-[140%] md:bg-[120%]"
+              className="w-full sm:w-[690px] md:w-[650px] h-[289px] hover:scale-105 active:scale-100 transition-all rounded-3xl pl-14 pt-9 text-3xl sm:bg-[140%] md:bg-[120%]"
               style={{
                 backgroundImage: 'url(/frame3.png)',
                 backgroundRepeat: 'no-repeat',
@@ -409,7 +411,7 @@ function Homepage() {
               <span className="text-xl ">Party</span>
             </div>
             <div
-              className="w-full sm:w-[650px] md:w-[395px] h-[289px] pt-9 pl-14 text-3xl rounded-3xl "
+              className="w-full sm:w-[650px] md:w-[395px] hover:scale-105 active:scale-100 transition-all h-[289px] pt-9 pl-14 text-3xl rounded-3xl "
               style={{
                 backgroundImage: 'url(/frame4.png)',
                 backgroundSize: '99%',
