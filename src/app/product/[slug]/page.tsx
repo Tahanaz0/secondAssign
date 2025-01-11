@@ -58,8 +58,8 @@ function Route() {
                         <button className="bg-red-100 text-red-500 w-20 rounded-3xl">40%</button>
 
                     </div>
-                    <p className="w-[93%] border-b-2 border-gray-300 p-5">This graphic t-shirt which is perfect for any occasion.
-                        Crafted from a soft and breathable fabric, it offers superior comfort and style.</p>
+                    <p className="w-[93%] border-b-2 border-gray-300 p-5">{`This graphic t-shirt which is perfect for any occasion.
+                        Crafted from a soft and breathable fabric, it offers superior comfort and style.`}</p>
 
                     <div className="flex flex-col justify-start gap-10 mt-5">
                         <div className="flex justify-start gap-5 border-b-2 border-gray-300 pb-7 ">
@@ -128,7 +128,7 @@ function Route() {
                              As a fellow designer, I appreciate the attention to detail. It's become my favorite go-to shirt."`}
 
                         </p>
-                        <p className="mt-5">Posted on August 14, 2023</p>
+                        <p className="mt-5">{`Posted on August 14, 2023`}</p>
 
                     </div>
                     <div className=" border border-gray-300 rounded-3xl w-[96%] flex flex-col justify-self-center p-3">
@@ -184,7 +184,7 @@ function Route() {
                              I can see the designer's touch in every aspect of this shirt."`}
 
                         </p>
-                        <p className="mt-5">Posted on August 16, 2023</p>
+                        <p className="mt-5">{`Posted on August 16, 2023`}</p>
 
                     </div>
                     <div className=" border border-gray-300 rounded-3xl w-[96%] flex flex-col justify-self-center p-5">
@@ -240,7 +240,7 @@ function Route() {
                              It's like wearing a piece of art that reflects my passion for both design and fashion."`}
 
                         </p>
-                        <p className="mt-5">Posted on August 18, 2023</p>
+                        <p className="mt-5">{`Posted on August 18, 2023`}</p>
 
                     </div>
                     <div className=" border border-gray-300 rounded-3xl w-[96%] flex flex-col justify-self-center p-5">
@@ -268,7 +268,7 @@ function Route() {
                             The intricate details and thoughtful layout of the design make this shirt a conversation starter."`}
 
                         </p>
-                        <p className="mt-5">Posted on August 19, 2023</p>
+                        <p className="mt-5">{`Posted on August 19, 2023`}</p>
 
                     </div>
                 </div>
