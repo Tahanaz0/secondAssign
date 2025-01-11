@@ -17,21 +17,21 @@ const product = [
 function Route() {
     return (
         <>
-            <div className="flex  justify-center gap-5">
-                <div>
-                    <div className="flex gap-5">
-                        <div className="flex flex-col gap-3">
-                            <Image src='/greenT.png' width={100} height={100} alt="shirt"></Image>
-                            <Image src='/greenB.png' width={100} height={100} alt="shirt"></Image>
-                            <Image src='/greenF.png' width={100} height={100} alt="shirt"></Image>
-                        </div>
-                        <div>
-                            <Image src='/greenS.png' width={300} height={100} alt="shirt"></Image>
-                        </div>
+            <div className="flex  justify-center flex-col sm:flex-col md:flex-row m-5 gap-5">
 
+                <div className="flex flex-col-reverse sm:flex-col-reverse   md:flex-row gap-5 justify-center p-2">
+                    <div className="flex flex-row sm:flex-row md:flex-col  gap-3">
+                        <Image src='/greenT.png' width={100} height={100} alt="shirt"></Image>
+                        <Image src='/greenB.png' width={100} height={100} alt="shirt"></Image>
+                        <Image src='/greenF.png' width={100} height={100} alt="shirt"></Image>
                     </div>
+                    <div>
+                        <Image src='/greenS.png' width={0} height={0} alt="shirt" sizes="100%" className="w-[80%] sm:w-[50%] md:w-[85%] lg:w-[95%]"></Image>
+                    </div>
+
+
                 </div>
-                <div className="w-[50%] p-6 ">
+                <div className="w-[100%] sm:w-[100%] md:w-[50%] p-6 ">
                     <h1 className="text-2xl sm:text-3xl md:text-3xl  "
                         style={{ fontWeight: 900 }}>ONE LIFE GRAPHICS T-SHIRTS</h1>
                     <div className="flex space-x-1 mt-2">
@@ -56,21 +56,20 @@ function Route() {
                         <p className="text-xl sm:2xl md:text-[1.5v] mt-2 ">$260</p>
                         <p className="text-xl sm:2xl md:text-[1.5v] mt-2 text-gray-300 line-through">$300</p>
                         <button className="bg-red-100 text-red-500 w-20 rounded-3xl">40%</button>
-
                     </div>
                     <p className="w-[93%] border-b-2 border-gray-300 p-5">{`This graphic t-shirt which is perfect for any occasion.
                         Crafted from a soft and breathable fabric, it offers superior comfort and style.`}</p>
 
                     <div className="flex flex-col justify-start gap-10 mt-5">
                         <div className="flex justify-start gap-5 border-b-2 border-gray-300 pb-7 ">
-                            <button className="bg-[#F0F0F0] w-[75px] rounded-3xl p-1 hover:bg-black hover:text-white">Small</button>
+                            <button className="bg-[#F0F0F0] w-[75px] rounded-3xl p-1 hover:bg-black hover:text-white ">Small</button>
                             <button className="bg-[#F0F0F0] w-[75px] rounded-3xl p-1 hover:bg-black hover:text-white">Medium</button>
                             <button className="bg-[#F0F0F0] w-[76px] rounded-3xl p-1 hover:bg-black hover:text-white">Large</button>
                             <button className="bg-[#F0F0F0] w-[76px] rounded-3xl p-1 hover:bg-black hover:text-white">X-Large</button>
 
                         </div>
 
-                       <ProductPage/>
+                        <ProductPage/>
                     </div>
                 </div>
 
@@ -91,10 +90,10 @@ function Route() {
                     </div>
                     <div className=' sm:flex-wrap flex justify-end gap-2'>
                         <div className="flex gap-4">
-                            <button className="bg-[#F0F0F0] rounded-2xl w-10">
-                                <Image src='/bal.png' width={25} height={25} alt='balance' ></Image>
+                            <button className="bg-[#F0F0F0] rounded-2xl w-9 h-6 sm:w-10 md:w-10  ">
+                                <Image src='/bal.png' width={0} height={0} alt='balance' sizes="100%" className="w-[60%] sm:w-[80%] md:w-[10%] lg:w-[95%]" ></Image>
                             </button>
-                            <button className="bg-[#F0F0F0] rounded-2xl w-24">
+                            <button className="bg-[#F0F0F0] rounded-2xl hidden sm:hidden md:block w-24 ">
                                 <div className="flex justify-center items-center gap-2"> <p> Latest </p> <GoChevronDown /></div>
                             </button>
                             <button className="bg-black text-white rounded-2xl w-32">Write a Review</button>
