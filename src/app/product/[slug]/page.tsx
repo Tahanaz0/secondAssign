@@ -1,5 +1,6 @@
 import Image from "next/image"
 import { GoChevronDown } from "react-icons/go";
+import ProductPage from '@/app/component/addtocart'
 const product = [
 
     {
@@ -57,11 +58,11 @@ function Route() {
                         <button className="bg-red-100 text-red-500 w-20 rounded-3xl">40%</button>
 
                     </div>
-                    <p className="w-[79%]">This graphic t-shirt which is perfect for any occasion.
-                        Crafted from a soft and breathable fabric, it offers superior comfort and style.</p>          
-                        
-                        <div className="flex flex-col gap-10 mt-5">
-                        <div className="flex justify-start gap-5">
+                    <p className="w-[93%] border-b-2 border-gray-300 p-5">This graphic t-shirt which is perfect for any occasion.
+                        Crafted from a soft and breathable fabric, it offers superior comfort and style.</p>
+
+                    <div className="flex flex-col justify-start gap-10 mt-5">
+                        <div className="flex justify-start gap-5 border-b-2 border-gray-300 pb-7 ">
                             <button className="bg-[#F0F0F0] w-[75px] rounded-3xl p-1 hover:bg-black hover:text-white">Small</button>
                             <button className="bg-[#F0F0F0] w-[75px] rounded-3xl p-1 hover:bg-black hover:text-white">Medium</button>
                             <button className="bg-[#F0F0F0] w-[76px] rounded-3xl p-1 hover:bg-black hover:text-white">Large</button>
@@ -69,16 +70,7 @@ function Route() {
 
                         </div>
 
-                    <div className="flex justify-center gap-5">
-                        <div className="bg-[#F0F0F0] flex justify-center w-[20%] rounded-2xl gap-5">
-                            <button>-</button>
-                            <p>1</p>
-                            <button>+</button>
-                        </div>
-                        <div className="w-[400px]">
-                            <button className="bg-black text-white w-[70%] rounded-3xl p-1">Add to cart</button>
-                        </div>
-                    </div>
+                       <ProductPage/>
                     </div>
                 </div>
 
