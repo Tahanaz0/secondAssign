@@ -1,19 +1,19 @@
 import Image from "next/image"
 import { GoChevronDown } from "react-icons/go";
 import ProductPage from '@/app/component/addtocart'
-const product = [
+// const product = [
 
-    {
-        id: 1,
-        image: '/shop.png',
-        greenT: '$105'
-    },
-    {
-        id: 2,
-        image: '/shop.png',
-        greenT: '$105'
-    }
-]
+//     {
+//         id: 1,
+//         image: '/shop.png',
+//         greenT: '$105'
+//     },
+//     {
+//         id: 2,
+//         image: '/shop.png',
+//         greenT: '$105'
+//     }
+// ]
 function Route() {
     return (
         <>
