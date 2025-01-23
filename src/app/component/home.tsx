@@ -1,13 +1,21 @@
 import Image from "next/image";
 import Link from "next/link";
 function Homepage() {
+  const productData = [
+    { id: '1', name: 'T-shirt with tape Details', price: '$120', img: '/image1.png' },
+    { id: '2', per:'20%', strike:'$260', name: 'Skinny fit jeans', price: '$240', img: '/pent.png' },
+    { id: '3', strike:'$260',name: 'T-shirt with tape Details', price: '$140', img: '/shirt.png' },
+    { id: '4', per:'30%',strike:'$260', name: 'T-shirt with tape Details', price: '$160', img: '/tshirt.png' },
+    // {id:'5',name:'T-shirt with tape Details',price:'$150',img:'/image1.png'},
+
+  ]
 
   return (
     <>
       <div
         className="h-auto  bg-[#F0F0F0] sm:h-auto md:min-h-screen p-5 sm:p-5 md:p-10 md:w-full relative"
         style={{
-          backgroundImage: 'url(/bg.png)', 
+          backgroundImage: 'url(/bg.png)',
           backgroundRepeat: 'no-repeat',
         }}
       >
@@ -90,70 +98,98 @@ function Homepage() {
         <h1 className=" text-4xl text-center flex justify-center"
           style={{ fontWeight: 900 }}>NEW ARRIVALS</h1>
         <div className="grid grid-cols-1  sm:grid-cols-2   md:grid-cols-4 justify-center gap-4 mt-6">
-      <Link href={'/product/shirt1'}>
-          <div className="flex flex-col justify-center hover:scale-105 active:scale-100 transition-all  md:mb-0">
-            <Image src="/image1.png" width={300} height={300} alt="pic1" className="rounded-2xl" />
-           
-            <div  >
-              <p className="sm:2xl md:text-[1.5vw] py-4">T-shirt with tape Details</p>
 
-              <div className="flex space-x-1 mt-2">
-                {[...Array(5)].map((_, i) => (
-                  <Image
-                    key={i}
-                    src="/Star2.png"
-                    width={0}
-                    height={0}
-                    alt="star icon"
-                    sizes="100vw"
-                    style={{ width: '20px' }}
-                    className="sm:w-[16px] md:w-[20px] lg:w-[24px]"
-                  />
-                ))}
-                <div className="flex px-3">
-                  <p className="">3.5/</p>
-                  <p className="text-gray-400">5</p>
+          {
+            productData.map((item ,index) => {
+              return (
+                <Link 
+                key={index}
+                href={{
+                  pathname: `/product/${item.id}`,
+                  query: { name: item.name, price: item.price, img: item.img },
+                }}>
+                  <div className="flex flex-col justify-center hover:scale-105 active:scale-100 transition-all  md:mb-0">
+                    <Image src={item.img} width={300} height={300} alt="pic1" className="rounded-2xl" />
+
+                    <div  >
+                      <p className="sm:2xl md:text-[1.5vw] py-4">{item.name}</p>
+
+                      <div className="flex space-x-1 mt-2">
+                        {[...Array(5)].map((_, i) => (
+                          <Image
+                            key={i}
+                            src="/Star2.png"
+                            width={0}
+                            height={0}
+                            alt="star icon"
+                            sizes="100vw"
+                            style={{ width: '20px' }}
+                            className="sm:w-[16px] md:w-[20px] lg:w-[24px]"
+                          />
+                        ))}
+                        <div className="flex px-3">
+                          <p className="">3.5/</p>
+                          <p className="text-gray-400">5</p>
+                        </div>
+                      </div>
+                      <div className="flex gap-3 items-center">
+                        <p className="text-xl sm:2xl md:text-[1.5v] mt-2 ">{item.price}</p>
+                        {
+                          item.strike&&
+                          <p className="text-xl sm:2xl md:text-[1.5vw] text-gray-500 line-through m-0">{item.strike}</p>
+                          
+                        }
+                         {
+                          item.per&&
+                          <button className="bg-red-100 text-red-500 px-4 rounded-2xl">{item.per}</button>                          
+                        }
+
+                        
+
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              )
+            }
+            )
+          }
+
+          {/* <Link href={'product/2'}>
+            <div className="flex justify-center flex-col mb-4 md:mb-0 hover:scale-105 active:scale-100 transition-all">
+              <Image src="/pent.png" width={300} height={300} alt="pic2" className="object-cover" />
+              <div >
+                <p className="sm:2xl md:text-[1.5vw] py-4">Skinny fit jeans</p>
+
+
+                <div className="flex space-x-1 mt-2">
+                  {[...Array(5)].map((_, i) => (
+                    <Image
+                      key={i}
+                      src="/Star2.png"
+                      width={0}
+                      height={0}
+                      alt="star icon"
+                      sizes="100vw"
+                      style={{ width: '20px' }}
+                      className="sm:w-[16px] md:w-[20px] lg:w-[24px]"
+                    />
+                  ))}
+                  <div className="flex px-3">
+                    <p className="">3.5/</p>
+                    <p className="text-gray-400">5</p>
+                  </div>
+                </div>
+                <div className="flex gap-5 mt-3">
+                  <p className="text-xl sm:2xl md:text-[1.5v]">$240</p>
+                  <p className="text-xl sm:2xl md:text-[1.5vw] text-gray-500 line-through mr-2">$260</p>
+                  
                 </div>
               </div>
-              <div className="flex gap-3">
-                <p className="text-xl sm:2xl md:text-[1.5v] mt-2 ">$120</p>
-
-              </div>
             </div>
-          </div>
-          </Link>
-          <div className="flex justify-center flex-col mb-4 md:mb-0 hover:scale-105 active:scale-100 transition-all">
-            <Image src="/pent.png" width={300} height={300} alt="pic2" className="object-cover" />
-            <div >
-              <p className="sm:2xl md:text-[1.5vw] py-4">Skinny fit jeans</p>
+          </Link> */}
 
-
-              <div className="flex space-x-1 mt-2">
-                {[...Array(5)].map((_, i) => (
-                  <Image
-                    key={i}
-                    src="/Star2.png"
-                    width={0}
-                    height={0}
-                    alt="star icon"
-                    sizes="100vw"
-                    style={{ width: '20px' }}
-                    className="sm:w-[16px] md:w-[20px] lg:w-[24px]"
-                  />
-                ))}
-                <div className="flex px-3">
-                  <p className="">3.5/</p>
-                  <p className="text-gray-400">5</p>
-                </div>
-              </div>
-              <div className="flex gap-5 mt-3">
-                <p className="text-xl sm:2xl md:text-[1.5v]">$240</p>
-                <p className="text-xl sm:2xl md:text-[1.5vw] text-gray-500 line-through mr-2">$260</p>
-                <button className="bg-red-100 text-red-500 px-4 rounded-2xl">20%</button>
-              </div>
-            </div>
-          </div>
-          <div className="flex justify-center flex-col mb-4 md:mb-0 hover:scale-105 active:scale-100 transition-all">
+          {/* <div className="flex justify-center flex-col mb-4 md:mb-0 hover:scale-105 active:scale-100 transition-all">
             <Image src="/shirt.png" width={300} height={300} alt="pic3" className="object-cover" />
             <div >
               <p className="sm:2xl md:text-[1.5vw] py-4">Checkered Shirt</p>
@@ -213,7 +249,7 @@ function Homepage() {
                 <button className="bg-red-100 text-red-500 px-4 rounded-2xl">30%</button>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="mt-6 relative z-10  text-center">
           <button className="w-[100%] sm:w-[100%]  sm:text-xl md:w-56 md:px-12 py-2 border  border-gray-300 rounded-full hover:scale-105 active:scale-100 transition-all">
@@ -372,30 +408,30 @@ function Homepage() {
 
         <div className="flex flex-col justify-center items-center gap-3 mt-10 rounded-3xl w-full">
 
-        <div className="flex flex-col sm:flex-col md:flex-row justify-center gap-3 w-full">
-  <div
-    className="w-full sm:w-[650px] md:w-[395px] h-[289px] hover:scale-105 active:scale-100 transition-all rounded-3xl pl-14 pt-9 text-3xl"
-    style={{
-      backgroundImage: 'url(/frame1.png)',
-      backgroundSize: '100%',
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'center',
-    }}
-  >
-    <span className="text-xl">Casual</span>
-  </div>
+          <div className="flex flex-col sm:flex-col md:flex-row justify-center gap-3 w-full">
+            <div
+              className="w-full sm:w-[650px] md:w-[395px] h-[289px] hover:scale-105 active:scale-100 transition-all rounded-3xl pl-14 pt-9 text-3xl"
+              style={{
+                backgroundImage: 'url(/frame1.png)',
+                backgroundSize: '100%',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center',
+              }}
+            >
+              <span className="text-xl">Casual</span>
+            </div>
 
-  <div
-    className="w-full sm:w-[690px] md:w-[650px] h-[289px] hover:scale-105 active:scale-100 transition-all rounded-3xl pl-14 pt-9 text-3xl sm:bg-[140%] md:bg-[120%]"
-    style={{
-      backgroundImage: 'url(/frame.png)',
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'center',
-    }}
-  >
-    <span className="text-xl">Formal</span>
-  </div>
-</div>
+            <div
+              className="w-full sm:w-[690px] md:w-[650px] h-[289px] hover:scale-105 active:scale-100 transition-all rounded-3xl pl-14 pt-9 text-3xl sm:bg-[140%] md:bg-[120%]"
+              style={{
+                backgroundImage: 'url(/frame.png)',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center',
+              }}
+            >
+              <span className="text-xl">Formal</span>
+            </div>
+          </div>
 
 
 
@@ -431,7 +467,7 @@ function Homepage() {
       <div>
         <div className="flex justify-between p-5 ">
           <div className="text-3xl sm:text-3xl"
-          style={{ fontWeight: 900 }}>
+            style={{ fontWeight: 900 }}>
             OUR HAPPY CUSTOMERS
 
           </div>
@@ -531,8 +567,8 @@ function Homepage() {
       </div>
       <div className="flex justify-around gap-5 items-center flex-col sm:flex-col md:flex-row  bg-black text-white p-5 m-10 rounded-2xl">
         <div className=" w-[50%] sm:w-[50%] md:w[20%] lg:w-[35%]">
-          <h1 className="text-3xl "  
-           style={{ fontWeight: 900 }}>STAY UPTO DATE ABOUT OUR LATEST OFFERS</h1>
+          <h1 className="text-3xl "
+            style={{ fontWeight: 900 }}>STAY UPTO DATE ABOUT OUR LATEST OFFERS</h1>
         </div>
         <div className="flex w-[100%] sm:w-[100%] flex-col justify-center md:w-[30%]  gap-2">
           <div className="flex    jutify-center items-center p-3 pl-7 bg-[#F0F0F1] gap-3 md:w-[100%] sm:bg-[#F0F0F1]  md:bg-[#F0F0F0]  rounded-full">

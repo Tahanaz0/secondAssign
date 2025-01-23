@@ -1,20 +1,28 @@
+"use client"
 import Image from "next/image"
 import { GoChevronDown } from "react-icons/go";
 import ProductPage from '@/app/component/addtocart'
-// const product = [
+import { useParams } from "next/navigation";
+const product = [
 
-//     {
-//         id: 1,
-//         image: '/shop.png',
-//         greenT: '$105'
-//     },
-//     {
-//         id: 2,
-//         image: '/shop.png',
-//         greenT: '$105'
-//     }
-// ]
+    {
+        id: 1,
+        image: '/shop.png',
+        greenT: '$105'
+    },
+    {
+        id: 2,
+        image: '/shop.png',
+        greenT: '$105'
+    },
+    {
+        id: 3,
+        image: '/shop.png',
+        greenT: '$105'
+    }
+]
 function Route() {
+    const data= useParams()
     return (
         <>
             <div className="flex  justify-center flex-col sm:flex-col md:flex-row m-5 gap-5">
@@ -33,7 +41,7 @@ function Route() {
                 </div>
                 <div className="w-[100%] sm:w-[100%] md:w-[50%] p-6 ">
                     <h1 className="text-2xl sm:text-3xl md:text-3xl  "
-                        style={{ fontWeight: 900 }}>ONE LIFE GRAPHICS T-SHIRTS</h1>
+                        style={{ fontWeight: 900 }}>ONE LIFE GRAPHICS T-SHIRTS {data.id}</h1>
                     <div className="flex space-x-1 mt-2">
                         {[...Array(5)].map((_, i) => (
                             <Image
