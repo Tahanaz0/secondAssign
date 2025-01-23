@@ -1,47 +1,34 @@
-"use client"
 import Image from "next/image"
 import { GoChevronDown } from "react-icons/go";
 import ProductPage from '@/app/component/addtocart'
-import { useParams } from "next/navigation";
-const product = [
 
-    {
-        id: 1,
-        image: '/shop.png',
-        greenT: '$105'
-    },
-    {
-        id: 2,
-        image: '/shop.png',
-        greenT: '$105'
-    },
-    {
-        id: 3,
-        image: '/shop.png',
-        greenT: '$105'
-    }
-]
-function Route() {
-    const data= useParams()
+
+async  function  Route({searchParams}:any) {
+    
+    const data = await searchParams
     return (
         <>
             <div className="flex  justify-center flex-col sm:flex-col md:flex-row m-5 gap-5">
 
                 <div className="flex flex-col-reverse sm:flex-col-reverse   md:flex-row gap-5 justify-center p-2">
                     <div className="flex flex-row sm:flex-row md:flex-col  gap-3">
-                        <Image src='/greenT.png' width={100} height={100} alt="shirt"></Image>
-                        <Image src='/greenB.png' width={100} height={100} alt="shirt"></Image>
-                        <Image src='/greenF.png' width={100} height={100} alt="shirt"></Image>
+                        <Image src={data.img} width={0} height={0} alt="shirt" sizes="100%" className="bg-[#F0F0F0] w-[100px]"></Image>
+                        <Image src={data.img2} width={0} height={0} alt="shirt" sizes="100%" className="bg-[#F0F0F0] w-[100px]"></Image>
+                        <Image src={data.img3} width={0} height={0} alt="shirt" sizes="100%" className="bg-[#F0F0F0] w-[100px]"></Image>
                     </div>
-                    <div>
-                        <Image src='/greenS.png' width={0} height={0} alt="shirt" sizes="100%" className="w-[80%] sm:w-[50%] md:w-[85%] lg:w-[95%]"></Image>
+                    <div style={{
+                        width:'350px',
+                        height:'350px'
+
+                    }}>
+                        <Image src={data.img} width={0} height={0} alt="shirt" sizes="100%" className="w-[80%] sm:w-[50%] md:w-[85%] lg:w-[95%]"></Image>
                     </div>
 
 
                 </div>
                 <div className="w-[100%] sm:w-[100%] md:w-[50%] p-6 ">
                     <h1 className="text-2xl sm:text-3xl md:text-3xl  "
-                        style={{ fontWeight: 900 }}>ONE LIFE GRAPHICS T-SHIRTS {data.id}</h1>
+                        style={{ fontWeight: 900 }}> {data.name}</h1>
                     <div className="flex space-x-1 mt-2">
                         {[...Array(5)].map((_, i) => (
                             <Image
@@ -56,17 +43,16 @@ function Route() {
                             />
                         ))}
                         <div className="flex px-3">
-                            <p className="">3.5/</p>
+                            <p className="">{data.rate}</p>
                             <p className="text-gray-400">5</p>
                         </div>
                     </div>
                     <div className="flex gap-3">
-                        <p className="text-xl sm:2xl md:text-[1.5v] mt-2 ">$260</p>
-                        <p className="text-xl sm:2xl md:text-[1.5v] mt-2 text-gray-300 line-through">$300</p>
-                        <button className="bg-red-100 text-red-500 w-20 rounded-3xl">40%</button>
+                        <p className="text-xl sm:2xl md:text-[1.5v] mt-2 ">{data.price}</p>
+                        <p className="text-xl sm:2xl md:text-[1.5v] mt-2 text-gray-300 line-through"> {data.strike} </p>
+                        <button className="bg-red-100 text-red-500 w-20 rounded-3xl"> {data.per} </button>
                     </div>
-                    <p className="w-[93%] border-b-2 border-gray-300 p-5">{`This graphic t-shirt which is perfect for any occasion.
-                        Crafted from a soft and breathable fabric, it offers superior comfort and style.`}</p>
+                    <p className="w-[93%] border-b-2 border-gray-300 p-5">{data.descript} </p>
 
                     <div className="flex flex-col justify-start gap-10 mt-5">
                         <div className="flex justify-start gap-5 border-b-2 border-gray-300 pb-7 ">

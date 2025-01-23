@@ -2,11 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 function Homepage() {
   const productData = [
-    { id: '1', name: 'T-shirt with tape Details', price: '$120', img: '/image1.png' },
-    { id: '2', per:'20%', strike:'$260', name: 'Skinny fit jeans', price: '$240', img: '/pent.png' },
-    { id: '3', strike:'$260',name: 'T-shirt with tape Details', price: '$140', img: '/shirt.png' },
-    { id: '4', per:'30%',strike:'$260', name: 'T-shirt with tape Details', price: '$160', img: '/tshirt.png' },
-    // {id:'5',name:'T-shirt with tape Details',price:'$150',img:'/image1.png'},
+    { id: '1', name: 'T-shirt with tape Details', price: '$120', img: '/image1.png', img2: "/greenB.png", img3: "/greenF.png" ,rate:"3.5/", descript: 'This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.' },
+    { id: '2', name: 'Skinny fit jeans ',per: '20%', strike: '$260',  price: '$240', img: '/pent.png', img2: "/jeans.jpg", img3: "/jeansSide.jpg" ,rate:"3.5/", descript: "These pants are perfect for any occasion. Made from premium, breathable fabric, they provide exceptional comfort and timeless style" },
+    { id: '3', name: 'Checkered Shirt',strike: '$260',  price: '$140', img: '/shirt.png', img2: "/check.jpg", img3: "/checkF.jpg" ,rate:"45.5/", descript: "This checkered shirt is a versatile wardrobe essential. Made from soft, breathable fabric, it combines classic style with all-day comfort, perfect for any occasion." },
+    { id: '4', name: 'Sleeve Striped T-Shirt',per: '30%', strike: '$260',  price: '$160', img: '/tshirt.png', img2: "", img3: "" ,rate:"45.5/", descript: "This striped t-shirt is a perfect blend of style and comfort, crafted from soft, breathable fabric for a sleek and casual look." },
 
   ]
 
@@ -100,14 +99,14 @@ function Homepage() {
         <div className="grid grid-cols-1  sm:grid-cols-2   md:grid-cols-4 justify-center gap-4 mt-6">
 
           {
-            productData.map((item ,index) => {
+            productData.map((item, index) => {
               return (
-                <Link 
-                key={index}
-                href={{
-                  pathname: `/product/${item.id}`,
-                  query: { name: item.name, price: item.price, img: item.img },
-                }}>
+                <Link
+                  key={index}
+                  href={{
+                    pathname: `/product/${item.id}`,
+                    query: { ...item },
+                  }}>
                   <div className="flex flex-col justify-center hover:scale-105 active:scale-100 transition-all  md:mb-0">
                     <Image src={item.img} width={300} height={300} alt="pic1" className="rounded-2xl" />
 
@@ -128,23 +127,23 @@ function Homepage() {
                           />
                         ))}
                         <div className="flex px-3">
-                          <p className="">3.5/</p>
+                          <p className="">{item.rate}</p>
                           <p className="text-gray-400">5</p>
                         </div>
                       </div>
                       <div className="flex gap-3 items-center">
                         <p className="text-xl sm:2xl md:text-[1.5v] mt-2 ">{item.price}</p>
                         {
-                          item.strike&&
+                          item.strike &&
                           <p className="text-xl sm:2xl md:text-[1.5vw] text-gray-500 line-through m-0">{item.strike}</p>
-                          
+
                         }
-                         {
-                          item.per&&
-                          <button className="bg-red-100 text-red-500 px-4 rounded-2xl">{item.per}</button>                          
+                        {
+                          item.per &&
+                          <button className="bg-red-100 text-red-500 px-4 rounded-2xl">{item.per}</button>
                         }
 
-                        
+
 
                       </div>
                     </div>
