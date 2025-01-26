@@ -64,6 +64,12 @@ export default defineType({
             of:[
                 {type: 'string'}
             ]
-        }
+        },
+        {
+          name: 'rating',
+          title: 'Rating',
+          type: 'number',
+          description: 'Average rating of the product',
+        },
     ],
 })

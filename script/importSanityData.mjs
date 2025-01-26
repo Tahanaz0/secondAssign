@@ -83,4 +83,4 @@ export  async function importProducts() {
   }
 }
 
-// importProducts();
+importProducts();
