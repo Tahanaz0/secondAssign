@@ -260,26 +260,27 @@ function Homepage() {
         </ul>
       </div>
 
-      <div className="p-8 mt-8">
+      <div className="">
         <h1 className=" text-4xl text-center flex justify-center"
           style={{ fontWeight: 900 }}>NEW ARRIVALS</h1>
-        <div className="grid grid-cols-1  sm:grid-cols-2   md:grid-cols-4 justify-center gap-4 mt-6">
+        <div className="grid grid-cols-1  sm:grid-cols-1 bg-orange-400 md:grid-cols-4 justify-center mt-6">
 
           {
-            productData.map((item, index) => {
-              console.log(item, "product ")
+            
+            productData.map((item :any, index) => {
+              // console.log(item, "product ")
               const img: any = item.image
               return (
 
                 <Link
                   key={item.id}
                   href={{
-                    // pathname: `/product/${item.id}`,
-                    // query: { ...item },
+                    pathname: `/product/${item.id}`,
+                    query: { ...item },
                   }}>
-                  <div className="flex flex-col justify-center hover:scale-105 active:scale-100 transition-all  md:mb-0">
+                  <div className="flex flex-col items-center justify-center hover:scale-105 active:scale-100 transition-all p-5 md:mb-0">
                     <div className="h-[300px] w-[300px]  p-3">
-                      <Image loader={() => img} src={img} width={0} height={0} alt="pic1" sizes="100%" className="rounded-2xl h-[100%] w-[100%] " />
+                      <Image loader={() => img} src={img} width={0} height={0} alt="pic1" sizes="100vw" className="rounded-2xl h-[300px] w-[300px] " />
                     </div>
                     <div  >
                       <p className="sm:2xl md:text-[1.5vw] py-4">{item.name}</p>
@@ -291,11 +292,11 @@ function Homepage() {
                           } else if (i < item.rating) {
                             return <FaStarHalfAlt key={i} style={{ fill: '#FFC633' }} />; // Half Star
                           } else {
-                            return <FaRegStar  key={i} style={{ fill:'#FFC633'  }} />; // Empty Star
+                            return <FaRegStar key={i} style={{ fill: '#FFC633' }} />; // Empty Star
                           }
                         })}
 
-                        <div className="flex px-3">
+                        <div className="flex ">
 
                           {
                             item.rating &&
@@ -330,101 +331,7 @@ function Homepage() {
             )
           }
 
-          {/* <Link href={'product/2'}>
-            <div className="flex justify-center flex-col mb-4 md:mb-0 hover:scale-105 active:scale-100 transition-all">
-              <Image src="/pent.png" width={300} height={300} alt="pic2" className="object-cover" />
-              <div >
-                <p className="sm:2xl md:text-[1.5vw] py-4">Skinny fit jeans</p>
 
-
-                <div className="flex space-x-1 mt-2">
-                  {[...Array(5)].map((_, i) => (
-                    <Image
-                      key={i}
-                      src="/Star2.png"
-                      width={0}
-                      height={0}
-                      alt="star icon"
-                      sizes="100vw"
-                      style={{ width: '20px' }}
-                      className="sm:w-[16px] md:w-[20px] lg:w-[24px]"
-                    />
-                  ))}
-                  <div className="flex px-3">
-                    <p className="">3.5/</p>
-                    <p className="text-gray-400">5</p>
-                  </div>
-                </div>
-                <div className="flex gap-5 mt-3">
-                  <p className="text-xl sm:2xl md:text-[1.5v]">$240</p>
-                  <p className="text-xl sm:2xl md:text-[1.5vw] text-gray-500 line-through mr-2">$260</p>
-                  
-                </div>
-              </div>
-            </div>
-          </Link> */}
-
-          {/* <div className="flex justify-center flex-col mb-4 md:mb-0 hover:scale-105 active:scale-100 transition-all">
-            <Image src="/shirt.png" width={300} height={300} alt="pic3" className="object-cover" />
-            <div >
-              <p className="sm:2xl md:text-[1.5vw] py-4">Checkered Shirt</p>
-
-              <div className="flex space-x-1 mt-2">
-                {[...Array(5)].map((_, i) => (
-                  <Image
-                    key={i}
-                    src="/Star2.png"
-                    width={0}
-                    height={0}
-                    alt="star icon"
-                    sizes="100vw"
-                    style={{ width: '20px' }}
-                    className="sm:w-[16px] md:w-[20px] lg:w-[24px]"
-                  />
-                ))}
-                <div className="flex px-3">
-                  <p className="">45.5/</p>
-                  <p className="text-gray-400">5</p>
-                </div>
-              </div>
-              <div className="flex  mt-3">
-                <p className="text-xl sm:2xl md:text-[1.5vw] ">$180</p>
-
-              </div>
-            </div>
-          </div>
-          <div className="flex justify-center flex-col mb-4 md:mb-0 hover:scale-105 active:scale-100 transition-all">
-            <Image src="/tshirt.png" width={300} height={300} alt="pic4" className="object-cover" />
-            <div>
-              <p className="sm:2xl md:text-[1.5vw] py-4">Sleeve Striped {`T-Shirt`}</p>
-
-              <div className="flex space-x-1 mt-2">
-                {[...Array(5)].map((_, i) => (
-                  <Image
-                    key={i}
-                    src="/Star2.png"
-                    width={0}
-                    height={0}
-                    alt="star icon"
-                    sizes="100vw"
-                    style={{ width: '20px' }}
-                    className="sm:w-[16px] md:w-[20px] lg:w-[24px]"
-                  />
-                ))}
-                <div className="flex px-3">
-                  <p className="">45.5/</p>
-                  <p className="text-gray-400">5</p>
-
-
-                </div>
-              </div>
-              <div className="flex gap-5 mt-3">
-                <p className="text-xl sm:2xl md:text-[1.5vw] ">$130</p>
-                <p className="text-xl sm:2xl md:text-[1.5vw] text-gray-500 line-through mr-2">$160</p>
-                <button className="bg-red-100 text-red-500 px-4 rounded-2xl">30%</button>
-              </div>
-            </div>
-          </div> */}
         </div>
         <div className="mt-6 relative z-10  text-center">
           <button className="w-[100%] sm:w-[100%]  sm:text-xl md:w-56 md:px-12 py-2 border  border-gray-300 rounded-full hover:scale-105 active:scale-100 transition-all">

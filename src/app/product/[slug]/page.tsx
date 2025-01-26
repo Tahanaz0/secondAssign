@@ -1,28 +1,58 @@
+"use client"
 import Image from "next/image"
 import { GoChevronDown } from "react-icons/go";
 import ProductPage from '@/app/component/addtocart'
+import { FaRegStar, FaStar, FaStarHalfAlt } from "react-icons/fa";
+import { useState } from "react";
+import { url } from "inspector";
 
 
-async  function  Route({searchParams}:any) {
-    
+async function Route({ searchParams }: any) {
+   const [productColor, setProductColor] = useState<string>('');
+ 
     const data = await searchParams
+    // console.log(data, 'data')
+    const img: any = data.image
     return (
         <>
             <div className="flex  justify-center flex-col sm:flex-col md:flex-row m-5 gap-5">
 
                 <div className="flex flex-col-reverse sm:flex-col-reverse   md:flex-row gap-5 justify-center p-2">
                     <div className="flex flex-row sm:flex-row md:flex-col  gap-3">
-                        <Image src={data.img} width={0} height={0} alt="shirt" sizes="100%" className="bg-[#F0F0F0] w-[100px]"></Image>
-                        <Image src={data.img2} width={0} height={0} alt="shirt" sizes="100%" className="bg-[#F0F0F0] w-[100px]"></Image>
-                        <Image src={data.img3} width={0} height={0} alt="shirt" sizes="100%" className="bg-[#F0F0F0] w-[100px]"></Image>
+                        <Image loader={() => img} src={img} width={0} height={0} alt="shirt" sizes="100%" className="bg-[#F0F0F0] w-[100px]"></Image>
+                        <Image loader={() => img} src={img} width={0} height={0} alt="shirt" sizes="100%" className="bg-[#F0F0F0] w-[100px]"></Image>
+                        <Image loader={() => img} src={img} width={0} height={0} alt="shirt" sizes="100%" className="bg-[#F0F0F0] w-[100px]"></Image>
                     </div>
-                    <div style={{
-                        width:'350px',
-                        height:'350px'
+                    {/* <div style={{
+                        width: '350px',
+                        height: '350px',
+                        backgroundImage: url
+                        backgroundSize:'cover',
 
                     }}>
-                        <Image src={data.img} width={0} height={0} alt="shirt" sizes="100%" className="w-[80%] sm:w-[50%] md:w-[85%] lg:w-[95%]"></Image>
-                    </div>
+                        <Image loader={() => img} src={img} width={0} height={0} alt="shirt" sizes="100%" className="w-[80%] sm:w-[50%] md:w-[85%] lg:w-[95%]"></Image>
+                    </div> */}
+                    <div
+        style={{
+          position: 'relative',
+          height: '300px',
+          width: '300px',
+          backgroundImage: `url(${img})`, // Image URL
+          backgroundSize: 'cover',
+        }}
+      >
+        {/* Overlay div with dynamic tint color */}
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor:productColor, // Tint color from state
+          }}
+        />
+      </div>
 
 
                 </div>
@@ -30,40 +60,81 @@ async  function  Route({searchParams}:any) {
                     <h1 className="text-2xl sm:text-3xl md:text-3xl  "
                         style={{ fontWeight: 900 }}> {data.name}</h1>
                     <div className="flex space-x-1 mt-2">
-                        {[...Array(5)].map((_, i) => (
-                            <Image
-                                key={i}
-                                src="/Star2.png"
-                                width={0}
-                                height={0}
-                                alt="star icon"
-                                sizes="100vw"
-                                style={{ width: '20px' }}
-                                className="sm:w-[16px] md:w-[20px] lg:w-[24px]"
-                            />
-                        ))}
+                        {[...Array(5)].map((_, i) => {
+                            if (i < Math.floor(data.rating)) {
+                                return <FaStar key={i} style={{ fill: '#FFC633' }} />; // Full Star
+                            } else if (i < data.rating) {
+                                return <FaStarHalfAlt key={i} style={{ fill: '#FFC633' }} />; // Half Star
+                            } else {
+                                return <FaRegStar key={i} style={{ fill: '#FFC633' }} />; // Empty Star
+                            }
+                        })}
                         <div className="flex px-3">
-                            <p className="">{data.rate}</p>
+                            <p className="">{data.rating}</p>
                             <p className="text-gray-400">5</p>
                         </div>
                     </div>
-                    <div className="flex gap-3">
-                        <p className="text-xl sm:2xl md:text-[1.5v] mt-2 ">{data.price}</p>
-                        <p className="text-xl sm:2xl md:text-[1.5v] mt-2 text-gray-300 line-through"> {data.strike} </p>
-                        <button className="bg-red-100 text-red-500 w-20 rounded-3xl"> {data.per} </button>
+                    <div className="flex gap-3 items-center">
+                        <p className="text-xl sm:2xl md:text-[1.5v] mt-2 ">${(data.price - (data.price * data.discountPercent) / 100).toFixed(2)}</p>
+                        {
+                            data.discountPercent > 0 &&
+                            <p className="text-xl sm:2xl md:text-[1.5vw] text-gray-500 line-through m-0">${data.price}</p>
+                        }
+                        {
+                            data.discountPercent > 0 &&
+                            <button className="bg-red-100 text-red-500 px-4 rounded-2xl">{data.discountPercent}%</button>
+                        }
+
+
+
                     </div>
-                    <p className="w-[93%] border-b-2 border-gray-300 p-5">{data.descript} </p>
+                    <p className="w-[93%] border-b-2 border-gray-300 p-5">{data.description} </p>
 
                     <div className="flex flex-col justify-start gap-10 mt-5">
                         <div className="flex justify-start gap-5 border-b-2 border-gray-300 pb-7 ">
-                            <button className="bg-[#F0F0F0] w-[75px] rounded-3xl p-1 hover:bg-black hover:text-white ">Small</button>
-                            <button className="bg-[#F0F0F0] w-[75px] rounded-3xl p-1 hover:bg-black hover:text-white">Medium</button>
-                            <button className="bg-[#F0F0F0] w-[76px] rounded-3xl p-1 hover:bg-black hover:text-white">Large</button>
-                            <button className="bg-[#F0F0F0] w-[76px] rounded-3xl p-1 hover:bg-black hover:text-white">X-Large</button>
+                            {
+                                data?.colors?.map((item: any) => {
+
+                                    return (
+
+
+                                        <button className=" w-[75px] rounded-full "
+                                        style={{
+                                            background:item.toLowerCase(),
+                                            width:"50px",
+                                            height:'50px',
+                                            border:'1px solid black',
+
+                                        }}
+                                        onClick={()=>{
+                                            setProductColor(item.toLowerCase())
+                                            
+                                        }}
+                                        ></button>
+                                    )
+                                }
+                                )
+                            }
+
+
+                        </div>
+                        <div className="flex justify-start gap-5 border-b-2 border-gray-300 pb-7 ">
+                            {
+                                data?.sizes?.map((item: any) => {
+
+                                    return (
+
+
+                                        <button className="bg-[#F0F0F0] w-[75px] rounded-3xl p-1 hover:bg-black hover:text-white ">{item}</button>
+                                    )
+                                }
+                                )
+                            }
+
 
                         </div>
 
-                        <ProductPage/>
+                        <ProductPage />
                     </div>
                 </div>
 
