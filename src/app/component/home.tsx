@@ -1,4 +1,5 @@
 "use client"
+import { FaRegStar, FaStar, FaStarHalfAlt } from "react-icons/fa";
 import axios from "axios";
 import { createClient } from '@sanity/client';
 import Image from "next/image";
@@ -8,21 +9,31 @@ import groq from "groq";
 
 const productQuery = groq`
   *[_type == "products"]{
-    _id,
-    name,
-    price,
-    description,
-    "image": image.asset->url,
-    category,
-    discountPercent,
-    new,
-    colors,
-    sizes,
-    rating {
-      rate
-    }
+    ...,
+    "image": image.asset->url
+   
   }
 `;
+
+// const productQuery = groq`
+//   *[_type == "products"]{
+//     _id,
+//     title,
+//     name,
+//     price,
+//     description,
+//     "image": image.asset->url,
+//     category,
+//     discountPercent,
+//     new,
+//     colors,
+//     sizes,
+//     rating {
+//       rate
+//     }
+//   }
+// `;
+// const query = `*[_type == "products"]`;  // Sirf "post" type ke documents
 
 
 
@@ -37,10 +48,11 @@ function Homepage() {
   type Product = {
     title: string;
     rate: number;
+    name: string;
     id: string;
     description: string;
     price: number;
-    discountPercentage: number;
+    discountPercent: number;
     priceWithoutDiscount: number;
     rating: number;
     ratingCount: number;
@@ -62,15 +74,16 @@ function Homepage() {
   const client = createClient({
     projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID = "5172dchs",
     dataset: process.env.NEXT_PUBLIC_SANITY_DATASET = "production",
-    useCdn: false,
+    useCdn: true,
     token: process.env.SANITY_API_TOKEN = "sk0s5DEohWchYdChQ2nrcNqxW7kxf0hQRN49rHssFCrUKUwnYe2azBvLsGRHMaHo0JWZui2gA5Vsj36r3GL7jGUKv3KDiaOSuT1AKot2XACN6vXMlALAr7lKVFus40OWZ0jrPAFpvdRjD1WqHRm3mMGrCIDQ9GgJbgye3BSyl55StBVfre8Z",
-    apiVersion: '2021-08-31',
+    apiVersion: '2023-08-31',
   });
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const data = await client.fetch(productQuery);
         setProductData(data);
+        console.log(data, 'querr dataa')
 
       } catch (error) {
         console.error("Error fetching products:", error);
@@ -254,7 +267,7 @@ function Homepage() {
 
           {
             productData.map((item, index) => {
-              console.log(item, "product Item")
+              console.log(item, "product ")
               const img: any = item.image
               return (
 
@@ -269,37 +282,41 @@ function Homepage() {
                       <Image loader={() => img} src={img} width={0} height={0} alt="pic1" sizes="100%" className="rounded-2xl h-[100%] w-[100%] " />
                     </div>
                     <div  >
-                      <p className="sm:2xl md:text-[1.5vw] py-4">{item.title}</p>
+                      <p className="sm:2xl md:text-[1.5vw] py-4">{item.name}</p>
 
                       <div className="flex space-x-1 mt-2">
-                        {[...Array(5)].map((_, i) => (
-                          <Image
-                            key={i}
-                            src="/Star2.png"
-                            width={0}
-                            height={0}
-                            alt="star icon"
-                            sizes="100vw"
-                            style={{ width: '20px' }}
-                            className="sm:w-[16px] md:w-[20px] lg:w-[24px]"
-                          />
-                        ))}
+                        {[...Array(5)].map((_, i) => {
+                          if (i < Math.floor(item.rating)) {
+                            return <FaStar key={i} style={{ fill: '#FFC633' }} />; // Full Star
+                          } else if (i < item.rating) {
+                            return <FaStarHalfAlt key={i} style={{ fill: '#FFC633' }} />; // Half Star
+                          } else {
+                            return <FaRegStar  key={i} style={{ fill:'#FFC633'  }} />; // Empty Star
+                          }
+                        })}
+
                         <div className="flex px-3">
-                          <p className="">{item.rating}</p>
-                          <p className="text-gray-400">5</p>
+
+                          {
+                            item.rating &&
+                            <>
+                              <p className="text-black">{item.rating}</p>
+                              <p className="text-gray-400">/5</p>
+                            </>
+                          }
                         </div>
                       </div>
                       <div className="flex gap-3 items-center">
-                        <p className="text-xl sm:2xl md:text-[1.5v] mt-2 ">$ {item.price}</p>
-                        {/* {
-                          item.strike &&
-                          <p className="text-xl sm:2xl md:text-[1.5vw] text-gray-500 line-through m-0">{item.strike}</p>
+                        <p className="text-xl sm:2xl md:text-[1.5v] mt-2 ">${(item.price - (item.price * item.discountPercent) / 100).toFixed(2)}</p>
+                        {
+                          item.discountPercent > 0 &&
+                          <p className="text-xl sm:2xl md:text-[1.5vw] text-gray-500 line-through m-0">${item.price}</p>
 
                         }
                         {
-                          item.per &&
-                          <button className="bg-red-100 text-red-500 px-4 rounded-2xl">{item.per}</button>
-                        } */}
+                          item.discountPercent > 0 &&
+                          <button className="bg-red-100 text-red-500 px-4 rounded-2xl">{item.discountPercent}%</button>
+                        }
 
 
 
