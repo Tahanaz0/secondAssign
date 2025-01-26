@@ -1,9 +1,9 @@
 'use client'
 import Image from "next/image";
+import React, { useState } from "react";
 import { FcMenu } from "react-icons/fc";
 import { GoChevronDown } from "react-icons/go";
-import React, { useState } from "react";
-
+import Link from "next/link";
 
 
 function Nav() {
@@ -74,7 +74,7 @@ function Nav() {
                         <input className="hidden sm:hidden md:block bg-[#F0F0F1]  w-96 outline-none rounded-full " type="search" placeholder="search for products..." name="" id="" />
                     </div>
                     <div className="flex gap-3 p-1">
-                        <Image src='/shop.png' width={30} height={30} alt="search"></Image>
+                       <Link href="cart"> <Image src='/shop.png' width={30} height={30} alt="search"></Image></Link>
                         <Image src='/contact.png' width={35} height={10} alt="search"></Image>
 
                     </div>

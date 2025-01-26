@@ -7,11 +7,14 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "migrate": "node script/migrate.mjs"
+    
+    "import-data": "node script/importSanityData.mjs"
   },
   "dependencies": {
+    "@sanity/client": "^6.27.1",
     "@sanity/image-url": "^1.1.0",
     "@sanity/vision": "^3.70.0",
+    "axios": "^1.7.9",
     "dotenv": "^16.4.7",
     "next": "15.1.0",
     "next-sanity": "^9.8.37",

@@ -1,14 +1,143 @@
+"use client"
+import axios from "axios";
+import { createClient } from '@sanity/client';
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import groq from "groq";
+
+const productQuery = groq`
+  *[_type == "products"]{
+    _id,
+    name,
+    price,
+    description,
+    "imageUrl": image.asset->url,
+    category,
+    discountPercent,
+    new,
+    colors,
+    sizes
+  }
+`;
+
+
 function Homepage() {
-  const productData = [
-    { id: '1', name: 'T-shirt with tape Details', price: '$120', img: '/image1.png', img2: "/greenB.png", img3: "/greenF.png" ,rate:"3.5/", descript: 'This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.' },
-    { id: '2', name: 'Skinny fit jeans ',per: '20%', strike: '$260',  price: '$240', img: '/pent.png', img2: "/jeans.jpg", img3: "/jeansSide.jpg" ,rate:"3.5/", descript: "These pants are perfect for any occasion. Made from premium, breathable fabric, they provide exceptional comfort and timeless style" },
-    { id: '3', name: 'Checkered Shirt',strike: '$260',  price: '$140', img: '/shirt.png', img2: "/check.jpg", img3: "/checkF.jpg" ,rate:"45.5/", descript: "This checkered shirt is a versatile wardrobe essential. Made from soft, breathable fabric, it combines classic style with all-day comfort, perfect for any occasion." },
-    { id: '4', name: 'Sleeve Striped T-Shirt',per: '30%', strike: '$260',  price: '$160', img: '/tshirt.png', img2: "", img3: "" ,rate:"45.5/", descript: "This striped t-shirt is a perfect blend of style and comfort, crafted from soft, breathable fabric for a sleek and casual look." },
+  // const productData = [
+  //   { id: '1', name: 'T-shirt with tape Details', price: '$120', img: '/image1.png', img2: "/greenB.png", img3: "/greenF.png" ,rate:"3.5/", descript: 'This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.' },
+  //   { id: '2', name: 'Skinny fit jeans ',per: '20%', strike: '$260',  price: '$240', img: '/pent.png', img2: "/jeans.jpg", img3: "/jeansSide.jpg" ,rate:"3.5/", descript: "These pants are perfect for any occasion. Made from premium, breathable fabric, they provide exceptional comfort and timeless style" },
+  //   { id: '3', name: 'Checkered Shirt',strike: '$260',  price: '$140', img: '/shirt.png', img2: "/check.jpg", img3: "/checkF.jpg" ,rate:"45.5/", descript: "This checkered shirt is a versatile wardrobe essential. Made from soft, breathable fabric, it combines classic style with all-day comfort, perfect for any occasion." },
+  //   { id: '4', name: 'Sleeve Striped T-Shirt',per: '30%', strike: '$260',  price: '$160', img: '/tshirt.png', img2: "", img3: "" ,rate:"45.5/", descript: "This striped t-shirt is a perfect blend of style and comfort, crafted from soft, breathable fabric for a sleek and casual look." },
 
-  ]
+  // ]
+  type Product = {
+    title: string;
+    rate: number;
+    id: string;
+    description: string;
+    price: number;
+    discountPercentage: number;
+    priceWithoutDiscount: number;
+    rating: number;
+    ratingCount: number;
+    tags: string[];
+    sizes: string[];
+    image?: {
+      _type: string;
+      asset: {
+        _type: string;
+        _ref: string;
+      };
+    };
+  };
 
+  // Use the Product type for the state
+  const [productData, setProductData] = useState<Product[]>([]);
+
+  const client = createClient({
+    projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID = "5172dchs",
+    dataset: process.env.NEXT_PUBLIC_SANITY_DATASET = "production",
+    useCdn: false,
+    token: process.env.SANITY_API_TOKEN = "sk0s5DEohWchYdChQ2nrcNqxW7kxf0hQRN49rHssFCrUKUwnYe2azBvLsGRHMaHo0JWZui2gA5Vsj36r3GL7jGUKv3KDiaOSuT1AKot2XACN6vXMlALAr7lKVFus40OWZ0jrPAFpvdRjD1WqHRm3mMGrCIDQ9GgJbgye3BSyl55StBVfre8Z",
+    apiVersion: '2021-08-31',
+  });
+  useEffect(() => {
+    // Function to upload an image to Sanity
+    const uploadImageToSanity = async (imageUrl: string) => {
+      try {
+        console.log(`Uploading image: ${imageUrl}`);
+        const response = await axios.get(imageUrl, { responseType: 'arraybuffer' });
+        const buffer = Buffer.from(response.data);
+
+        const asset = await client.assets.upload('image', buffer, {
+          filename: imageUrl.split('/').pop(),
+        });
+
+        console.log(`Image uploaded successfully: ${asset._id}`);
+        return asset._id;
+      } catch (error) {
+        console.error('Failed to upload image:', imageUrl, error);
+        return null;
+      }
+    };
+
+    // Function to fetch and import data
+    const importData = async () => {
+      try {
+        console.log('Fetching products from API...');
+        const response = await axios.get('https://fakestoreapi.com/products');
+        const products = response.data;
+        console.log(`Fetched ${products.length} products`);
+        console.log(response, 'api data')
+        setProductData(response.data)
+
+
+        for (const product of products) {
+          console.log(`Processing product: ${product.title}`);
+          let imageRef = null;
+
+          // Upload image if available
+          if (product.image) {
+            imageRef = await uploadImageToSanity(product.image);
+          }
+
+          // Prepare product data for Sanity
+          const sanityProduct = {
+            _type: 'product',
+            name: product.title,
+            description: product.description,
+            price: product.price,
+            discountPercentage: 0,
+            priceWithoutDiscount: product.price,
+            rating: product.rating?.rate || 0,
+            ratingCount: product.rating?.count || 0,
+            tags: product.category ? [product.category] : [],
+            sizes: [],
+            image: imageRef
+              ? {
+                _type: 'image',
+                asset: {
+                  _type: 'reference',
+                  _ref: imageRef,
+                },
+              }
+              : undefined,
+          };
+
+          console.log('Uploading product to Sanity:', sanityProduct.name);
+          const result = await client.create(sanityProduct);
+          console.log(`Product uploaded successfully: ${result._id}`);
+        }
+
+        console.log('Data import completed successfully!');
+      } catch (error) {
+        console.error('Error importing data:', error);
+      }
+    };
+
+    // Call the importData function
+    importData();
+  }, []);
   return (
     <>
       <div
@@ -100,18 +229,22 @@ function Homepage() {
 
           {
             productData.map((item, index) => {
+              console.log(item, "product Item")
+              const img: any = item.image
               return (
+
                 <Link
-                  key={index}
+                  key={item.id}
                   href={{
-                    pathname: `/product/${item.id}`,
-                    query: { ...item },
+                    // pathname: `/product/${item.id}`,
+                    // query: { ...item },
                   }}>
                   <div className="flex flex-col justify-center hover:scale-105 active:scale-100 transition-all  md:mb-0">
-                    <Image src={item.img} width={300} height={300} alt="pic1" className="rounded-2xl" />
-
+                    <div className="h-[300px] w-[300px]  p-3">
+                      <Image loader={() => img} src={img} width={0} height={0} alt="pic1" sizes="100%" className="rounded-2xl h-[100%] w-[100%] " />
+                    </div>
                     <div  >
-                      <p className="sm:2xl md:text-[1.5vw] py-4">{item.name}</p>
+                      <p className="sm:2xl md:text-[1.5vw] py-4">{item.title}</p>
 
                       <div className="flex space-x-1 mt-2">
                         {[...Array(5)].map((_, i) => (
@@ -127,13 +260,13 @@ function Homepage() {
                           />
                         ))}
                         <div className="flex px-3">
-                          <p className="">{item.rate}</p>
+                          <p className="">{item.rating.rate}</p>
                           <p className="text-gray-400">5</p>
                         </div>
                       </div>
                       <div className="flex gap-3 items-center">
                         <p className="text-xl sm:2xl md:text-[1.5v] mt-2 ">{item.price}</p>
-                        {
+                        {/* {
                           item.strike &&
                           <p className="text-xl sm:2xl md:text-[1.5vw] text-gray-500 line-through m-0">{item.strike}</p>
 
@@ -141,7 +274,7 @@ function Homepage() {
                         {
                           item.per &&
                           <button className="bg-red-100 text-red-500 px-4 rounded-2xl">{item.per}</button>
-                        }
+                        } */}
 
 
 
@@ -149,6 +282,7 @@ function Homepage() {
                     </div>
                   </div>
                 </Link>
+
               )
             }
             )

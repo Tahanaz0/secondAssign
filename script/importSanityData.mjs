@@ -1,11 +1,11 @@
 import { createClient } from '@sanity/client';
 
 const client = createClient({
-  projectId: 'your-project-id',
+  projectId: '5172dchs',
   dataset: 'production',
   useCdn: true,
   apiVersion: '2025-01-13',
-  token: 'your-auth-token',
+  token: 'sk0s5DEohWchYdChQ2nrcNqxW7kxf0hQRN49rHssFCrUKUwnYe2azBvLsGRHMaHo0JWZui2gA5Vsj36r3GL7jGUKv3KDiaOSuT1AKot2XACN6vXMlALAr7lKVFus40OWZ0jrPAFpvdRjD1WqHRm3mMGrCIDQ9GgJbgye3BSyl55StBVfre8Z',
 });
 
 async function uploadImageToSanity(imageUrl) {
@@ -65,7 +65,7 @@ async function uploadProduct(product) {
   }
 }
 
-async function importProducts() {
+export  async function importProducts() {
   try {
     const response = await fetch('https://template1-neon-nu.vercel.app/api/products');
 
@@ -83,4 +83,4 @@ async function importProducts() {
   }
 }
 
-importProducts();
+// importProducts();
