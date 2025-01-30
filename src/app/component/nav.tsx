@@ -49,7 +49,8 @@ function Nav() {
                                     className="hover:bg-[#F5F5F5] p-2 rounded"
                                     onClick={() => setMenuOpen(false)}
                                 >
-                                    Brands
+                                    <Link href='home'>Home</Link>
+
                                 </li>
                             </ul>
                         )}
@@ -62,10 +63,12 @@ function Nav() {
 
                 <div className="hidden sm:hidden md:block">
                     <ul className="flex gap-5">
-                        <div className="flex justify-center items-center"> <li>Shop </li> <GoChevronDown /></div>
+                        <div className="flex justify-center items-center">
+                            <li>Shop </li> 
+                            <GoChevronDown /></div>
                         <li>On Sale</li>
                         <li>New Arrivals</li>
-                        <li>Brands</li>
+                       <li><Link href='/'>Home</Link></li>
                     </ul>
                 </div>
                 <div className="flex gap-2 ">
@@ -74,8 +77,8 @@ function Nav() {
                         <input className="hidden sm:hidden md:block bg-[#F0F0F1]  w-96 outline-none rounded-full " type="search" placeholder="search for products..." name="" id="" />
                     </div>
                     <div className="flex gap-3 p-1">
-                       <Link href="cart"> <Image src='/shop.png' width={30} height={30} alt="search"></Image></Link>
-                        <Image src='/contact.png' width={35} height={10} alt="search"></Image>
+                        <Link href="cart"> <Image src='/shop.png' width={30} height={30} alt="search"></Image></Link>
+                        <Link href="contact"><Image src='/contact.png' width={35} height={10} alt="search"></Image></Link>
 
                     </div>
                 </div>

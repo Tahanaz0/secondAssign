@@ -35,10 +35,11 @@ async function Route({ searchParams }: any) {
                     <div
         style={{
           position: 'relative',
-          height: '300px',
-          width: '300px',
+          height: '400px',
+          width: '400px',
           backgroundImage: `url(${img})`, // Image URL
           backgroundSize: 'cover',
+          
         }}
       >
         {/* Overlay div with dynamic tint color */}
