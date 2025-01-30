@@ -1,10 +1,10 @@
 "use client"
 import Image from "next/image"
 import { GoChevronDown } from "react-icons/go";
-import ProductPage from '@/app/component/addtocart'
 import { FaRegStar, FaStar, FaStarHalfAlt } from "react-icons/fa";
 import { useState } from "react";
-import { url } from "inspector";
+// import { url } from "inspector";
+import AddtoCart from "@/app/component/addtocart";
 
 
 async function Route({ searchParams }: any) {
@@ -134,7 +134,7 @@ async function Route({ searchParams }: any) {
 
                         </div>
 
-                        <ProductPage />
+                        <AddtoCart />
                     </div>
                 </div>
 

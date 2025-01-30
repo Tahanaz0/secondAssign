@@ -263,7 +263,7 @@ function Homepage() {
       <div className="">
         <h1 className=" text-4xl text-center flex justify-center"
           style={{ fontWeight: 900 }}>NEW ARRIVALS</h1>
-        <div className="grid grid-cols-1  sm:grid-cols-1 bg-orange-400 md:grid-cols-4 justify-center mt-6">
+        <div className="grid grid-cols-1  sm:grid-cols-1 md:grid-cols-4 justify-center mt-6">
 
           {
             
