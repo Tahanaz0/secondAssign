@@ -70,7 +70,7 @@ function Cart() {
     useEffect(() => {
         const storedCart = JSON.parse(localStorage.getItem("cart") || "[]");
         setCartItems(storedCart);
-        console.log(storedCart , 'locaal')
+        console.log(storedCart , 'locaallocaal')
       }, []);
       
     return (

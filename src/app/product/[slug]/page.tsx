@@ -11,8 +11,7 @@ async function Route({ searchParams }: any) {
     const [productColor, setProductColor] = useState<string>('');
 
     const data = await searchParams
-    // console.log(data, 'data')
-    const img: any = data.image
+     const img: any = data.image
     return (
         <>
                 <div className="flex  justify-center flex-col sm:flex-col md:flex-row m-5 gap-5">
@@ -135,7 +134,7 @@ async function Route({ searchParams }: any) {
 
                             </div>
 
-                            <AddtoCart />
+                            <AddtoCart data={data} />
                         </div>
                     </div>
 

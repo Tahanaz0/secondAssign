@@ -37,9 +37,7 @@ const AddtoCart: React.FC = () => {
 
     // Get existing cart from localStorage
     const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
-   console.log(existingCart, )
-   console.log(localStorage,'local storage')
-    // Check if product already exists in the cart
+     // Check if product already exists in the cart
     const productIndex = existingCart.findIndex((item: any) => item.id === product.id);
 
     if (productIndex > -1) {
