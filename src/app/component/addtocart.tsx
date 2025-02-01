@@ -38,6 +38,7 @@ const AddtoCart: React.FC = () => {
     // Get existing cart from localStorage
     const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
    console.log(existingCart, )
+   console.log(localStorage,'local storage')
     // Check if product already exists in the cart
     const productIndex = existingCart.findIndex((item: any) => item.id === product.id);
 
@@ -46,7 +47,7 @@ const AddtoCart: React.FC = () => {
       existingCart[productIndex].quantity += quantity;
     } else {
       // Add new product to the cart
-      existingCart.push('cart');
+      existingCart.push(product);
     }
 
     // Save updated cart to localStorage
