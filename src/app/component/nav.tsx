@@ -77,8 +77,9 @@ function Nav() {
                         <input className="hidden sm:hidden md:block bg-[#F0F0F1]  w-96 outline-none rounded-full " type="search" placeholder="search for products..." name="" id="" />
                     </div>
                     <div className="flex gap-3 p-1">
-                        <Link href="/cart"> <Image src='/shop.png' width={30} height={30} alt="search"></Image></Link>
-                        <Link href="contact"><Image src='/contact.png' width={35} height={10} alt="search"></Image></Link>
+                        <Link href="/cart"> 
+                        <Image src='/shop.png' width={30} height={30} alt="search"></Image></Link>
+                        <Link href="contact"><Image src='/contact.png' width={30} height={10} alt="search"></Image></Link>
 
                     </div>
                 </div>

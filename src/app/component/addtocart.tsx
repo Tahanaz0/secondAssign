@@ -1,13 +1,12 @@
 'use client';
 import React, { useState } from "react";
-interface Product {
-  id: number;
-  name: string;
-  price: number;
-  quantity: number;
+import { Product } from "./home/page";
+
+interface Props {
+  product: Product
 }
 
-const AddtoCart: React.FC = () => {
+const AddtoCart = ({ product }: Props) => {
   const [quantity, setQuantity] = useState(0);
 
   // Increase quantity
@@ -22,26 +21,29 @@ const AddtoCart: React.FC = () => {
     }
   };
 
-  // Add to cart functionality
+ 
   const addToCart = () => {
     if (quantity <= 0) {
       alert("Please select a quantity greater than 0.");
       return;
     }
 
-    const product = {
-      id: 1, // Hardcoded product ID for now (make it dynamic in the future)
-      name: "Sample Product", // Hardcoded product name
-      quantity: quantity, // Selected quantity
-    };
+    
 
-    // Get existing cart from localStorage
+   
     const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
-     // Check if product already exists in the cart
-    const productIndex = existingCart.findIndex((item: any) => item.id === product.id);
+    console.log(existingCart)
+    // Make sure cart data is valid
+    if (!Array.isArray(existingCart)) {
+      console.error("Invalid cart data in localStorage");
+      return; 
+    }
+
+    
+    const productIndex = existingCart.findIndex((item) => item && item.id === product.id);
 
     if (productIndex > -1) {
-      // Update quantity if product already exists
+      
       existingCart[productIndex].quantity += quantity;
     } else {
       // Add new product to the cart
@@ -49,7 +51,7 @@ const AddtoCart: React.FC = () => {
     }
 
     // Save updated cart to localStorage
-    localStorage.setItem( "cart", JSON.stringify(existingCart));
+    localStorage.setItem("cart", JSON.stringify(existingCart));
 
     alert(`Added ${quantity} item(s) to the cart!`);
   };

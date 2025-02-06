@@ -1,41 +1,38 @@
 "use client"
 import { FaRegStar, FaStar, FaStarHalfAlt } from "react-icons/fa";
-import axios from "axios";
-import { createClient } from '@sanity/client';
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import groq from "groq";
+import { client } from "@/sanity/lib/client";
 
 const productQuery = groq`
   *[_type == "products"]{
     ...,
+    "id": _id,
     "image": image.asset->url
    
   }
 `;
 
-// const productQuery = groq`
-//   *[_type == "products"]{
-//     _id,
-//     title,
-//     name,
-//     price,
-//     description,
-//     "image": image.asset->url,
-//     category,
-//     discountPercent,
-//     new,
-//     colors,
-//     sizes,
-//     rating {
-//       rate
-//     }
-//   }
-// `;
-// const query = `*[_type == "products"]`;  // Sirf "post" type ke documents
+// 
 
-
+export type Product = {
+  title: string;
+  rate: number;
+  name: string;
+  id: string;
+  description: string;
+  price: number;
+  discountPercent: number;
+  priceWithoutDiscount: number;
+  rating: number;
+  ratingCount: number;
+  tags: string[];
+  colors: string[];
+  sizes: string[];
+  image: string;
+};
 
 function Homepage() {
   // const productData = [
@@ -45,39 +42,12 @@ function Homepage() {
   //   { id: '4', name: 'Sleeve Striped T-Shirt',per: '30%', strike: '$260',  price: '$160', img: '/tshirt.png', img2: "", img3: "" ,rate:"45.5/", descript: "This striped t-shirt is a perfect blend of style and comfort, crafted from soft, breathable fabric for a sleek and casual look." },
 
   // ]
-  type Product = {
-    title: string;
-    rate: number;
-    name: string;
-    id: string;
-    description: string;
-    price: number;
-    discountPercent: number;
-    priceWithoutDiscount: number;
-    rating: number;
-    ratingCount: number;
-    tags: string[];
-    sizes: string[];
-    image?: {
-      _type: string;
-      asset: {
-        _type: string;
-        _ref: string;
-      };
-    };
-  };
+
 
   // Use the Product type for the state
   const [productData, setProductData] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const client = createClient({
-    projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID = "5172dchs",
-    dataset: process.env.NEXT_PUBLIC_SANITY_DATASET = "production",
-    useCdn: true,
-    token: process.env.SANITY_API_TOKEN = "sk0s5DEohWchYdChQ2nrcNqxW7kxf0hQRN49rHssFCrUKUwnYe2azBvLsGRHMaHo0JWZui2gA5Vsj36r3GL7jGUKv3KDiaOSuT1AKot2XACN6vXMlALAr7lKVFus40OWZ0jrPAFpvdRjD1WqHRm3mMGrCIDQ9GgJbgye3BSyl55StBVfre8Z",
-    apiVersion: '2023-08-31',
-  });
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -265,71 +235,55 @@ function Homepage() {
           style={{ fontWeight: 900 }}>NEW ARRIVALS</h1>
         <div className="grid grid-cols-1  sm:grid-cols-1 md:grid-cols-4 justify-center mt-6">
 
-          {
-            
-            productData.map((item :any, index) => {
-              // console.log(item, "product ")
-              const img: any = item.image
-              return (
+          {productData.map(item => (
 
-                <Link
-                  key={item.id}
-                  href={{
-                    pathname: `/product/${item.id}`,
-                    query: { ...item },
-                  }}>
-                  <div className="flex flex-col items-center justify-center hover:scale-105 active:scale-100 transition-all p-5 md:mb-0">
-                    <div className="h-[300px] w-[300px]  p-3">
-                      <Image loader={() => img} src={img} width={0} height={0} alt="pic1" sizes="100vw" className="rounded-2xl h-[300px] w-[300px] " />
-                    </div>
-                    <div  >
-                      <p className="sm:2xl md:text-[1.5vw] py-4">{item.name}</p>
+            <Link
+              key={item.id}
+              href={`/product/${item.id}`}>
+              <div className="flex flex-col items-center justify-center hover:scale-105 active:scale-100 transition-all p-5 md:mb-0">
+                <div className="h-[300px] w-[300px]  p-3">
+                  <Image loader={() => item.image} src={item.image} width={0} height={0} alt="pic1" sizes="100vw" className="rounded-2xl h-[300px] w-[300px] " />
+                </div>
+                <div  >
+                  <p className="sm:2xl md:text-[1.5vw] py-4">{item.name}</p>
 
-                      <div className="flex space-x-1 mt-2">
-                        {[...Array(5)].map((_, i) => {
-                          if (i < Math.floor(item.rating)) {
-                            return <FaStar key={i} style={{ fill: '#FFC633' }} />; // Full Star
-                          } else if (i < item.rating) {
-                            return <FaStarHalfAlt key={i} style={{ fill: '#FFC633' }} />; // Half Star
-                          } else {
-                            return <FaRegStar key={i} style={{ fill: '#FFC633' }} />; // Empty Star
-                          }
-                        })}
+                  <div className="flex space-x-1 mt-2">
+                    {[...Array(5)].map((_, i) => {
+                      if (i < Math.floor(item.rating)) {
+                        return <FaStar key={i} style={{ fill: '#FFC633' }} />; // Full Star
+                      } else if (i < item.rating) {
+                        return <FaStarHalfAlt key={i} style={{ fill: '#FFC633' }} />; // Half Star
+                      } else {
+                        return <FaRegStar key={i} style={{ fill: '#FFC633' }} />; // Empty Star
+                      }
+                    })}
 
-                        <div className="flex ">
+                    <div className="flex ">
 
-                          {
-                            item.rating &&
-                            <>
-                              <p className="text-black">{item.rating}</p>
-                              <p className="text-gray-400">/5</p>
-                            </>
-                          }
-                        </div>
-                      </div>
-                      <div className="flex gap-3 items-center">
-                        <p className="text-xl sm:2xl md:text-[1.5v] mt-2 ">${(item.price - (item.price * item.discountPercent) / 100).toFixed(2)}</p>
-                        {
-                          item.discountPercent > 0 &&
-                          <p className="text-xl sm:2xl md:text-[1.5vw] text-gray-500 line-through m-0">${item.price}</p>
-
-                        }
-                        {
-                          item.discountPercent > 0 &&
-                          <button className="bg-red-100 text-red-500 px-4 rounded-2xl">{item.discountPercent}%</button>
-                        }
-
-
-
-                      </div>
+                      {item.rating &&
+                        <>
+                          <p className="text-black">{item.rating}</p>
+                          <p className="text-gray-400">/5</p>
+                        </>
+                      }
                     </div>
                   </div>
-                </Link>
+                  <div className="flex gap-3 items-center">
+                    <p className="text-xl sm:2xl md:text-[1.5v] mt-2 ">${(item.price - (item.price * item.discountPercent) / 100).toFixed(2)}</p>
+                    {item.discountPercent > 0 &&
+                      <p className="text-xl sm:2xl md:text-[1.5vw] text-gray-500 line-through m-0">${item.price}</p>
+                    } 
 
-              )
-            }
-            )
-          }
+                    {item.discountPercent > 0 &&
+                      <button className="bg-red-100 text-red-500 px-4 rounded-2xl">{item.discountPercent}%</button>
+                    }
+
+                  </div>
+                </div>
+              </div>
+            </Link>
+          ))}
+
 
 
         </div>

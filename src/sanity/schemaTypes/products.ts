@@ -6,70 +6,78 @@ export default defineType({
     type: 'document',
     fields: [
         {
-        name: 'name',
-        title: 'Name',
-        type: 'string',
-        },
-        {
-        name: 'price',
-        title: 'Price',
-        type: 'number',
-        },
-        {
-        name: 'description',
-        title: 'Description',
-        type: 'text',
-        },
-        {
-        name: 'image',
-        title: 'Image',
-        type: 'image',
-        },
-        {
-            name:"category",
-            title:"Category",
+            name: 'name',
+            title: 'Name',
             type: 'string',
-            options:{
-                list:[
-                   {title: 'T-Shirt', value: 'tshirt'},
-                   {title: 'Short', value: 'short'}, 
-                   {title: 'Jeans', value: 'jeans'} ,
-                   {title: 'Hoddie', value: 'hoodie'} ,
-                   {title: 'Shirt', value: 'shirt'} ,
+        },
+        {
+            name: 'price',
+            title: 'Price',
+            type: 'number',
+        },
+        {
+            name: 'description',
+            title: 'Description',
+            type: 'text',
+        },
+        {
+            name: 'image',
+            title: 'Image',
+            type: 'image',
+        },
+        {
+            name: 'images',
+            title: 'Images',
+            type: 'array',
+            of: [
+                { type: 'image'},
+            ]
+        },
+        {
+            name: "category",
+            title: "Category",
+            type: 'string',
+            options: {
+                list: [
+                    { title: 'T-Shirt', value: 'tshirt' },
+                    { title: 'Short', value: 'short' },
+                    { title: 'Jeans', value: 'jeans' },
+                    { title: 'Hoddie', value: 'hoodie' },
+                    { title: 'Shirt', value: 'shirt' },
                 ]
             }
         },
         {
-            name:"discountPercent",
-            title:"Discount Percent",
+            name: "discountPercent",
+            title: "Discount Percent",
             type: 'number',
         },
         {
-            name:"new",
+            name: "new",
             type: 'boolean',
-            title:"New",
+            title: "New",
         },
         {
-            name:"colors",
-            title:"Colors",
+            name: "colors",
+            title: "Colors",
             type: 'array',
-            of:[
-                {type: 'string'}
+            of: [
+                { type: 'string' }
             ]
         },
         {
-            name:"sizes",
-            title:"Sizes",
+            name: "sizes",
+            title: "Sizes",
             type: 'array',
-            of:[
-                {type: 'string'}
+            of: [
+                { type: 'string' }
             ]
         },
         {
-          name: 'rating',
-          title: 'Rating',
-          type: 'number',
-          description: 'Average rating of the product',
+            name: 'rating',
+            title: 'Rating',
+            type: 'number',
+            description: 'Average rating of the product',
         },
     ],
 })
