@@ -103,7 +103,7 @@ function Cart() {
                             {cartItems.map((item, index) => (
                                 <tr key={item.id || index}>
                                     <td className="text-gray-600 py-2">
-                                        {item.name} (x{item.quantity})
+                                        {item.name} 
                                     </td>
                                     <td className="text-right font-semibold">
                                         ${item.price * item.quantity}

@@ -9,13 +9,13 @@ export default defineType({
       name: "customerName",
       title: "Customer Name",
       type: "string",
-      validation: (Rule: any) => Rule.required(),
+      validation: Rule => Rule.required(),
     }),
     defineField({
       name: "email",
       title: "Customer Email",
       type: "string",
-      validation: (Rule: any) => Rule.required().email(),
+      validation: Rule => Rule.required().email(),
     }),
     defineField({
       name: "cartItems",
@@ -27,31 +27,31 @@ export default defineType({
       name: "subtotal",
       title: "Subtotal",
       type: "number",
-      validation: (Rule: any) => Rule.required(),
+      validation: Rule => Rule.required(),
     }),
     defineField({
       name: "discount",
       title: "Discount",
       type: "number",
-      validation: (Rule: any) => Rule.optional(),
+      // No validation here means it's optional by default
     }),
     defineField({
       name: "deliveryFee",
       title: "Delivery Fee",
       type: "number",
-      validation: (Rule: any) => Rule.required(),
+      validation: Rule => Rule.required(),
     }),
     defineField({
       name: "totalAmount",
       title: "Total Amount",
       type: "number",
-      validation: (Rule: any) => Rule.required(),
+      validation: Rule => Rule.required(),
     }),
     defineField({
       name: "promoCode",
       title: "Promo Code",
       type: "string",
-      validation: (Rule: any) => Rule.optional(),
+      // Optional for string fields, no Rule.optional() needed
     }),
     defineField({
       name: "status",
@@ -60,13 +60,13 @@ export default defineType({
       options: {
         list: ["Pending", "Processing", "Shipped", "Delivered", "Cancelled"],
       },
-      validation: (Rule: any) => Rule.required(),
+      validation: Rule => Rule.required(),
     }),
     defineField({
       name: "createdAt",
       title: "Order Date",
       type: "datetime",
-      validation: (Rule: any) => Rule.required(),
+      validation: Rule => Rule.required(),
     }),
   ],
 });
