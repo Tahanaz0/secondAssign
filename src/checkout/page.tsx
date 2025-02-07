@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import { Product } from "@/app/component/home/page";
 import { getCartItems } from "@/app/action/action";
-import Link from "next/link";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 import { CgChevronRight } from "react-icons/cg";

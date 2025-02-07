@@ -16,7 +16,7 @@ type CartProduct = {
 
 function Cart() {
     const [cartItems, setCartItems] = useState<CartProduct[]>([]);
-    const [promoCode, setPromoCode] = useState<string>("");
+    
 
 
     useEffect(() => {
@@ -34,13 +34,13 @@ function Cart() {
     }, []);
 
 
-    const handleApplyPromo = () => {
-        alert(`Promo code "${promoCode}" applied!`);
-    };
+    // const handleApplyPromo = () => {
+    //     alert(`Promo code "${promoCode}" applied!`);
+    // };
 
-    const handleCheckout = () => {
-        alert("Proceeding to checkout...");
-    };
+    // const handleCheckout = () => {
+    //     alert("Proceeding to checkout...");
+    // };
 
 
     const handleRemoveItem = (id: number) => {
