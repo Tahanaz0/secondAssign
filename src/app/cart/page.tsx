@@ -55,7 +55,7 @@ function Cart() {
         <>
             <div className="flex flex-col justify-between sm:flex-col md:flex-row lg:flex-row p-6">
 
-                <div className="max-w-4xl mx-auto bg-white shadow-md rounded-2xl p-6">
+                <div className="w-[500px] bg-white shadow-md rounded-2xl p-6">
                     <h2 className="text-2xl font-bold mb-4">Your Cart</h2>
 
                     {cartItems.length > 0 ? (

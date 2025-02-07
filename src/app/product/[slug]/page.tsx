@@ -14,7 +14,7 @@ interface Props {
 }
 
 function Route({ params }: Props) {
-  const [productColor, setProductColor] = useState<string>('');
+  // const [productColor, setProductColor] = useState<string>('');
   const [product, setProduct] = useState<Product | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true)
 
@@ -94,7 +94,7 @@ function Route({ params }: Props) {
                 left: 0,
                 right: 0,
                 bottom: 0,
-                backgroundColor: productColor, // Tint color from state
+                // backgroundColor: productColor, // Tint color from state
               }}
             />
           </div>

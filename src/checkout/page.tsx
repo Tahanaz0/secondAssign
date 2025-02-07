@@ -200,38 +200,40 @@ export default function Checkout() {
               </p>
             </div>
           </div>
-          <div className="bg-white border rounded-lg p-4 space-y-8">
-            <h2 className="text-lg font-semibold mb-4">Billing Information</h2>
-            {["firstName", "lastName", "phone", "email", "address", "zipCode", "city"].map(
-              (field) => (
-                <div key={field}>
-                  <label htmlFor={field} className="mr-4">
-                    {field.charAt(0).toUpperCase() + field.slice(1)}
-                  </label>
-                  <input
-                    type="text"
-                    id={field}
-                    placeholder={`Enter Your ${field}`}
-                    value={formValues[field as keyof typeof formValues]}
-                    onChange={handleInputChange}
-                    className="border-2"
-                  />
-                  {formErrors[field as keyof typeof formErrors] && (
-                    <p className="text-red-600 text-sm font-light">
-                      {field.charAt(0).toUpperCase() + field.slice(1)} is
-                      required!
-                    </p>
-                  )}
-                </div>
-              )
-            )}
-            <button
-              onClick={handlePlaceOrder}
-              className="w-full h-12 mt-4 bg-[#F0F0F0] rounded-[22px] hover:bg-black hover:text-white"
-            >
-              Place Order
-            </button>
-          </div>
+          <div className="bg-white border rounded-lg p-6 space-y-6 shadow-md">
+  <h2 className="text-xl font-semibold text-gray-800">Billing Information</h2>
+
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    {["firstName", "lastName", "phone", "email", "address", "zipCode", "city"].map((field) => (
+      <div key={field} className="flex flex-col">
+        <label htmlFor={field} className="text-sm font-medium text-gray-700 mb-1">
+          {field.charAt(0).toUpperCase() + field.slice(1)}
+        </label>
+        <input
+          type="text"
+          id={field}
+          placeholder={`Enter Your ${field}`}
+          value={formValues[field as keyof typeof formValues]}
+          onChange={handleInputChange}
+          className="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black"
+        />
+        {formErrors[field as keyof typeof formErrors] && (
+          <p className="text-red-600 text-xs mt-1">
+            {field.charAt(0).toUpperCase() + field.slice(1)} is required!
+          </p>
+        )}
+      </div>
+    ))}
+  </div>
+
+  <button
+    onClick={handlePlaceOrder}
+    className="w-full h-12 bg-gray-200 rounded-full text-gray-800 font-semibold hover:bg-black hover:text-white transition"
+  >
+    Place Order
+  </button>
+</div>
+
         </div>
       </div>
     </div>
