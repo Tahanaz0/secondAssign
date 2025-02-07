@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { RiDeleteBinFill } from "react-icons/ri";
+import Checkout from "@/checkout/page";
 
 type CartProduct = {
     id: number;
@@ -93,8 +94,9 @@ function Cart() {
                         </p>
                     </div>
                 </div>
-
-                <div className="max-w-lg mx-auto bg-white shadow-md rounded-2xl p-6 m-5">
+                    
+                    <Checkout/>
+                {/* <div className="max-w-lg mx-auto bg-white shadow-md rounded-2xl p-6 m-5">
                     <h2 className="text-2xl font-bold mb-4">Order Summary</h2>
 
                     <table className="w-full mb-4">
@@ -167,7 +169,7 @@ function Cart() {
                     >
                         Go to Checkout
                     </button>
-                </div>
+                </div> */}
 
             </div>
             <div className="flex justify-around gap-5 items-center flex-col sm:flex-col md:flex-row  bg-black text-white p-5 m-10 rounded-2xl">

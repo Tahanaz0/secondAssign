@@ -32,6 +32,7 @@ export type Product = {
   colors: string[];
   sizes: string[];
   image: string;
+  stock: number;
 };
 
 function Homepage() {
@@ -69,83 +70,6 @@ function Homepage() {
     return <p>Loading products...</p>;
   }
 
-  // useEffect(() => {
-  //   // Function to upload an image to Sanity
-  //   const uploadImageToSanity = async (imageUrl: string) => {
-  //     try {
-  //       console.log(`Uploading image: ${imageUrl}`);
-  //       const response = await axios.get(imageUrl, { responseType: 'arraybuffer' });
-  //       const buffer = Buffer.from(response.data);
-
-  //       const asset = await client.assets.upload('image', buffer, {
-  //         filename: imageUrl.split('/').pop(),
-  //       });
-
-  //       console.log(`Image uploaded successfully: ${asset._id}`);
-  //       return asset._id;
-  //     } catch (error) {
-  //       console.error('Failed to upload image:', imageUrl, error);
-  //       return null;
-  //     }
-  //   };
-
-  //   // Function to fetch and import data
-  //   const importData = async () => {
-  //     try {
-  //       console.log('Fetching products from API...');
-  //       const response = await axios.get('https://fakestoreapi.com/products');
-  //       const products = response.data;
-  //       console.log(`Fetched ${products.length} products`);
-  //       console.log(response, 'api data')
-  //       setProductData(response.data)
-
-
-  //       for (const product of products) {
-  //         console.log(`Processing product: ${product.title}`);
-  //         let imageRef = null;
-
-  //         // Upload image if available
-  //         if (product.image) {
-  //           imageRef = await uploadImageToSanity(product.image);
-  //         }
-
-  //         // Prepare product data for Sanity
-  //         const sanityProduct = {
-  //           _type: 'product',
-  //           name: product.title,
-  //           description: product.description,
-  //           price: product.price,
-  //           discountPercentage: 0,
-  //           priceWithoutDiscount: product.price,
-  //           rating: product.rating?.rate || 0,
-  //           ratingCount: product.rating?.count || 0,
-  //           tags: product.category ? [product.category] : [],
-  //           sizes: [],
-  //           image: imageRef
-  //             ? {
-  //               _type: 'image',
-  //               asset: {
-  //                 _type: 'reference',
-  //                 _ref: imageRef,
-  //               },
-  //             }
-  //             : undefined,
-  //         };
-
-  //         console.log('Uploading product to Sanity:', sanityProduct.name);
-  //         const result = await client.create(sanityProduct);
-  //         console.log(`Product uploaded successfully: ${result._id}`);
-  //       }
-
-  //       console.log('Data import completed successfully!');
-  //     } catch (error) {
-  //       console.error('Error importing data:', error);
-  //     }
-  //   };
-
-  //   // Call the importData function
-  //   importData();
-  // }, []);
   return (
     <>
       <div
