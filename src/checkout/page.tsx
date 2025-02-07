@@ -56,7 +56,8 @@ export default function Checkout() {
   }, []);
   
   const subTotal = cartItems.reduce(
-    (total, item) => total + item.price * item.stock,
+    (total, item) => total + item.price ,
+    // * item.stock
     0
   );
 
@@ -125,6 +126,7 @@ export default function Checkout() {
         "Your order has been placed successfully",
         "success"
       );
+    console.log(OrderData,'dataorder')
     } catch (error) {
       console.error("Error", error);
       Swal.fire("Error", "Something went wrong", "error");
@@ -152,7 +154,10 @@ export default function Checkout() {
           <div className="bg-white border rounded-lg p-4 space-y-6">
             <h2 className="text-lg font-semibold mb-4">Order Summary</h2>
             {cartItems.length > 0 ? (
-              cartItems.map((item) => (
+              cartItems.map((item) => {
+                console.log(item,'item')
+                return( 
+                
                 <div
                   key={item.id}
                   className="flex items-center gap-8 py-3 border-4"
@@ -160,7 +165,7 @@ export default function Checkout() {
                   <div className="w-20 h-46 rounded overflow-hidden ml-8">
                     {item.image && (
                       <Image
-                        src={urlFor(item.image).url()}
+                        src={urlFor(item?.image).url()}
                         alt="image"
                         height={50}
                         width={50}
@@ -169,16 +174,17 @@ export default function Checkout() {
                     )}
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-sm font-medium">{item.name}</h3>
+                    <h3 className="text-sm font-medium">{item?.name}</h3>
                     <p className="text-xs text-gray-500">
-                      Quantity: {item.stock}
+                      Quantity: {item?.stock}
                     </p>
                   </div>
                   <p className="text-xs font-medium mr-6">
-                    ${item.price * item.stock}
+                    ${item?.price 
+                    * item?.stock}
                   </p>
                 </div>
-              ))
+              )})
             ) : (
               <p>No items in cart</p>
             )}

@@ -56,7 +56,7 @@ function Route({ params }: Props) {
   if (isLoading) return <p>Loading...</p>
   if (!product) return <p>Not found</p>
 
-
+  console.log(product,'product')
   return (
     <>
       <div className="flex  justify-center flex-col sm:flex-col md:flex-row m-5 gap-5">
@@ -148,7 +148,8 @@ function Route({ params }: Props) {
 
                   }}
                   onClick={() => {
-                    setProductColor(item.toLowerCase())
+                    // setProductColor(item.toLowerCase())
+                    product.selectedColor=item
                   }}
                 ></button>
               ))}
@@ -157,7 +158,10 @@ function Route({ params }: Props) {
             </div>
             <div className="flex justify-start gap-5 border-b-2 border-gray-300 pb-7 ">
               {product.sizes.map( (item, items) =>
-                <button className="bg-[#F0F0F0] w-[75px] rounded-3xl p-1 hover:bg-black hover:text-white "
+                <button onClick={()=>{
+                  product.selectedSize=item
+                }}
+                className="bg-[#F0F0F0] w-[75px] rounded-3xl p-1 hover:bg-black hover:text-white "
                 key={items}>{item}</button>
               )}
             </div>

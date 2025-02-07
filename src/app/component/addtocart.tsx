@@ -23,6 +23,7 @@ const AddtoCart = ({ product }: Props) => {
 
  
   const addToCart = () => {
+    console.log(product,'addtocat product')
     if (quantity <= 0) {
       alert("Please select a quantity greater than 0.");
       return;
@@ -37,6 +38,7 @@ const AddtoCart = ({ product }: Props) => {
     if (!Array.isArray(existingCart)) {
       console.error("Invalid cart data in localStorage");
       return; 
+      
     }
 
     

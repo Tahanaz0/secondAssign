@@ -33,6 +33,10 @@ export type Product = {
   sizes: string[];
   image: string;
   stock: number;
+  selectedSize:string;
+  selectedColor:string;
+  
+
 };
 
 function Homepage() {

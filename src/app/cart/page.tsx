@@ -50,7 +50,7 @@ function Cart() {
 
         window.dispatchEvent(new Event("storage"));
     };
-
+   console.log(cartItems,'cartitem')
     return (
         <>
             <div className="flex flex-col justify-between sm:flex-col md:flex-row lg:flex-row p-6">
@@ -59,7 +59,9 @@ function Cart() {
                     <h2 className="text-2xl font-bold mb-4">Your Cart</h2>
 
                     {cartItems.length > 0 ? (
-                        cartItems.map((item, index) => (
+                        cartItems.map((item, index) => {
+                            console.log(item,'itemproduct')
+                            return(
                             item && item.price ? (
                                 <div key={item.id || index} className="border-b hover:bg-gray-50 flex justify-between gap-3 p-5">
                                     {item.image ? (
@@ -82,7 +84,7 @@ function Cart() {
                                     />
                                 </div>
                             ) : null
-                        ))
+                        )})
                     ) : (
                         <p className="text-center p-5">Your cart is empty</p>
                     )}
@@ -90,7 +92,10 @@ function Cart() {
                     <div className="mt-4 flex justify-between items-center">
                         <h3 className="text-xl font-bold">Total</h3>
                         <p className="text-xl font-bold">
-                            ${cartItems.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2)}
+                            ${cartItems.reduce((total, item) => total + (item.price 
+                            // * item.quantity
+                                
+                            ), 0).toFixed(2)}
                         </p>
                     </div>
                 </div>
