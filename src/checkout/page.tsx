@@ -36,14 +36,25 @@ export default function Checkout() {
       const items = await getCartItems();
       setCartItems(items || []);
     };
-
+  
     fetchCartItems();
+  
     const appliedDiscount = localStorage.getItem("appliedDiscount");
     if (appliedDiscount) {
       setDiscount(Number(appliedDiscount));
     }
+  
+    const handleStorageChange = () => {
+      fetchCartItems(); // Local storage update hone par cart update hoga
+    };
+  
+    window.addEventListener("storage", handleStorageChange);
+  
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
   }, []);
-
+  
   const subTotal = cartItems.reduce(
     (total, item) => total + item.price * item.stock,
     0
