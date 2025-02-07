@@ -1,0 +1,153 @@
+HACKATHON Day 2 – Report Presented by: Rukhsar Ashraf
+ Planning The E-Commerce WorkflowThis planning document explains the step-by-step workflow of seƫng up and
+managing an e-commerce system using APIs, Sanity CMS, and frontend
+integraƟon.
+Step 1:My Website
+ Home Page: The user lands on the home page of the website.
+Product LisƟng Page:
+ - Displays a list of available products.
+ - Fetches product data dynamically from the backend.
+ - Includes search, sort, and filter opƟons to enhance user experience.
+Step 2:Product Detail Page
+Displays detailed informaƟon about a selected product.
+ Data includes:
+ - Product Name
+ - Price
+ - DescripƟon
+ - Images
+ - AddiƟonal features or specificaƟons (if any).
+- Fetches product data using an API or CMS (Sanity).
+Step 3:API IntegraƟon
+ API Purpose: To fetch product details from a backend server.
+ Example API Structure:
+{
+ "id": 1,
+ "name": "Chair",
+ "price": 120,
+ "descripƟon": "Comfortable wooden chair",
+ "image": "chair.jpg"
+}
+ API Endpoint Example:
+ - GET `/api/products` - Fetches a list of products.
+ - GET `/api/products/:id` - Fetches details of a single product.
+Step 4:Sanity CMS
+IntegraƟon: Import product data into Sanity CMS for content management.
+ Steps:
+ 1. Use the API to fetch product data.
+ 2. Import the fetched data into Sanity CMS.
+ 3. Update or edit the product details within Sanity Studio.
+Step 5:Define Schema
+- Sanity uses schemas to define the structure of data.
+- Example Schema for Product:
+ export default {
+ name: 'product',
+ type: 'document',
+ Ɵtle: 'Product',
+ fields: [
+ { name: 'name',
+ type: 'string',
+ Ɵtle: 'Name' },
+ { name: 'price',
+ type: 'number',
+ Ɵtle: 'Price' },
+ { name: 'descripƟon',
+ type: 'text',
+ Ɵtle: 'DescripƟon' },
+ { name: 'image',
+ type: 'image',
+ Ɵtle: 'Image' },
+ { name: 'stock',
+ type: 'number',
+ Ɵtle: 'Stock' },
+ { name: 'category',
+ type: 'string',
+ Ɵtle: 'Category' }
+ ]};
+Step 6:Sanity Studio
+ Sanity Studio is used to manage product data.
+ Interface includes fields to:
+ - Add or update product names, prices, descripƟons, and images.
+ - Manage stock and product categories.
+ - Data is now ready to be accessed from the frontend.
+Step 7:Frontend IntegraƟon
+ Goal: Fetch products from Sanity and display them on the website.
+ Process:
+ 1. Use GROQ queries to fetch data from Sanity.
+ 2. Dynamically populate the product lisƟng and detail pages.
+ 3. Handle paginaƟon, search, and filters in the frontend.
+Step 8:Product Display
+ - Display product informaƟon fetched from Sanity:
+ - Image, name, price, descripƟon, stock, and category.
+ - Includes an "Add to Cart" buƩon for each product.
+Step 9:Cart Page
+ - FuncƟonality:
+ - Displays items added to the cart.
+ - Shows a summary of the selected products with total cost.
+ - Includes a "Checkout" buƩon to proceed to payment.
+Step 10:Checkout Page
+ -Features:
+ - Form to collect customer informaƟon:
+ - Name
+ - Address
+ - Contact details
+ - Payment informaƟon
+ - "Pay" buƩon to complete the purchase.
+Step 11:Success Pag
+ - Confirms that the payment was successful.
+ - Includes a "Track Shipment" buƩon.
+Step 12:Shipment Tracking
+ - API is called to track the shipment of the order.
+ - Example Endpoint:
+ - POST `/api/shipment` - Generates a tracking label.
+ - Includes details like esƟmated delivery Ɵme and courier service.
+Step 13:Label GeneraƟon
+ - Final Step: Generate the shipment label through the API.
+ - This label can be shared with the customer for tracking their order.
+Step 14:Final Features
+ -Admin Panel: Allows management of orders, inventory, and tracking.
+ -Email NoƟficaƟons: Sends order confirmaƟon and shipping updates to
+customers.
+ -Responsive Design: Ensures the website is mobile-friendly for beƩer user
+experience.
+Simply:
++---------------------+
+| Frontend (Next.js) |
++---------------------+
+ ⬇
++---------------------+
+| Sanity CMS |
+| (Product Data, etc.)|
++---------------------+
+ ⬇
++---------+---------+---------+
+| Payment API | Shipment API | Email API |
+| (Stripe/PayPal) | (ShipEngine) | (SendGrid) |
++---------+---------+---------+
+ ⬇
++---------------------+
+| Database (Sanity) |
++---------------------+
+ ⬇
++---------------------+
+| AnalyƟcs (Tools) |
+| (Google AnalyƟcs, |
+| Mixpanel, etc.) |
++---------------------+
+ ⬇
++---------------------+
+| User Feedback |
+| (Surveys, Reviews) |
++---------------------+
+ ⬇
++---------------------+
+| Admin Dashboard |
+| (Manage Content, |
+| Monitor AcƟvity) |
++---------------------+
+--- Summary---
+This workflow outlines the enƟre process from displaying products on the website
+to managing them using Sanity CMS and compleƟng the customer’s purchase
+journey with shipment tracking. Each step integrates backend APIs, Sanity CMS,
+and frontend to ensure a seamless e-commerce experience. It also includes
+advanced features like stock management, admin panel, and email noƟficaƟons to
+improve funcƟonality.
